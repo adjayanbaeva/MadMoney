@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MadMoney.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace MadMoney
         public MainPage()
         {
             InitializeComponent();
+
+            // test instantiation
+            var budget = BudgetManager.GetBudget();
         }
     }
 }
