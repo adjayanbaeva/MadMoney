@@ -1,13 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace MadMoney.Model
 {
     // Baseline default implementation
-    public class BudgetMonth
+    public class BudgetMonth : INotifyPropertyChanged // ***TODO: Finish implementing this interface
+    // May ultimately be unnnecessary as an Expense may not
+    // change while it is bound to a UI control
+    // Bindings are re-established each time a Page is loaded, correct?
+    // Following this guide for INotifyPropertyChanged:
+    // https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/raise-change-notifications--bindingsource
+    // See also:
+    // https://xamarinhelp.com/xamarin-forms-binding/
     {
         private List<Expense> expenseCollection;
+
+        private decimal budgetGoal;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // Using [CallerMemberName] means that we would be doing runtime
+        // reflection, yes? Is there a way to avoid this?
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            // This line is the simplified equivelant of the
+            // commented-out if statement below
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            // Note that PropertyChanged? doesn't mean "did the property change?"
+            // It means "is PropertyChanged *not* null," specifically,
+            // if it is not null, Invoke the method call on it,
+            // else do nothing...just like the if statement below
+
+            //if (PropertyChanged != null)
+            //{
+            //    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            //}            
+        }
+
 
         // Which constructors are desired?
         public BudgetMonth(decimal goal,
@@ -20,7 +51,15 @@ namespace MadMoney.Model
         // the StartDate of the month can only be set as the
         // BudgetMonth is constructed
 
-        public decimal BudgetGoal { get; set; }
+        public decimal BudgetGoal
+        {
+                get { return budgetGoal; }
+                set
+                {
+                    budgetGoal = value;
+                    NotifyPropertyChanged();
+                }
+        }
         // Expense can go over budget goal
 
         // If AmountRemainingInBudgetGoal > 0, user has budget left this month

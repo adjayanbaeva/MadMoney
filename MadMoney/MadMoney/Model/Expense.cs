@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace MadMoney.Model
@@ -15,7 +16,11 @@ namespace MadMoney.Model
     }
 
     // Baseline default implementation
-    public class Expense
+    public class Expense // : INotifyPropertyChanged
+        // None of my test data changes Expenses yet
+        // May ultimately be unnnecessary as an Expense may not
+        // change while it is bound to a UI control
+        // Bindings are re-established each time a Page is loaded, correct?
     {
         // Which constructors are desired?
         public Expense(string descrip,
@@ -35,6 +40,8 @@ namespace MadMoney.Model
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
         public ExpenseCategory Category { get; set; }
+
+
 
         public bool IsValidAmount() { return true; }
         // need more user input validation methods

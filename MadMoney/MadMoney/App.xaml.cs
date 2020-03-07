@@ -10,7 +10,7 @@ namespace MadMoney
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainBudgetSummaryPage();
         }
 
         protected override void OnStart()
