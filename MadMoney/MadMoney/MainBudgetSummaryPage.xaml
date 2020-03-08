@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MadMoney.MainBudgetSummaryPage"
+             xmlns:data="MadMoney.Model">
+
+    <StackLayout>
+
+        <StackLayout x:Name="MonthNavigationBar"
+                     Orientation="Horizontal">
+            <Button x:Name="PreviousMonthButton"
+                Text="👈"
+                FontSize="30"
+                BackgroundColor="Purple"
+                Pressed="PreviousMonthButton_Pressed"/>
+
+            <Label x:Name="CurrentMonthLabel"
+                Text="February 2020"
+                FontSize="30"
+                HorizontalOptions="CenterAndExpand"/>
+
+            <Button x:Name="NextMonthButton"
+                Text="👉"
+                FontSize="30"
+                BackgroundColor="Purple"
+                Pressed="NextMonthButton_Pressed"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+
+            <Label Text="Budget Goal:"/>
+            <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+            <Label HorizontalOptions="CenterAndExpand"/>
+            <Label Text="💲"/>
+            <Label Text="{Binding BudgetGoal}"/>
+            <Label Text="🖍️"/>
+
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+
+            <Label Text="Budget Remaining:"/>
+            <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+            <Label HorizontalOptions="CenterAndExpand"/>
+            <Label Text="💲1,457.0"/>
+            <Label Text="🆗"/>
+
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+
+            <Label Text="Total Expenses:"/>
+            <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+            <Label HorizontalOptions="CenterAndExpand"/>
+            <Label Text="💲543.00"/>
+            <Label Text="💸"/>
+
+        </StackLayout>
+
+        <StackLayout x:Name="AddFilterButtonBar"
+                     Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+            <Button x:Name="AddExpenseButton_Top"
+                Text="Add Expense"
+                FontSize="22"
+                BackgroundColor="LightGreen"/>
+
+            <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+            <Label HorizontalOptions="CenterAndExpand"/>
+
+            <Button x:Name="FilterExpensesButton"
+                Text="Filter Expenses"
+                FontSize="22"
+                BackgroundColor="LightBlue"/>
+        </StackLayout>
+
+
+        <!-- TODO: Why is this not working? on DataTemplate: x:DataType="data:Expense"
+                Also on ListView: ItemsSource="{Binding expenseCollection}"
+                Currently setting BindingContext instead in MainBudgetSummaryPage constructor -->
+        <ListView x:Name="ExpensesListView"
+                  ItemsSource="{Binding Expenses}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Description}"/>
+                                <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+                                <Label HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="🍎"/> <!-- TODO: Update once emoji conversions are in -->
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Date}"/>
+                                <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+                                <Label HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="💲"/>
+                                <Label Text="{Binding Amount}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!-- Check to make sure that expenseCollection contains Expense objects
+            Try making it an ObservableCollection and see if that makes a difference
+            Could also try BindingContext...though I see Xamarin examples that use
+            ItemsSource?? -->
+
+        </ListView>
+
+
+        <Button x:Name="AddExpenseButton_Bottom"
+                Text="Add Expense"
+                FontSize="22"
+                BackgroundColor="LightGreen"/>
+
+    </StackLayout>
+
+
+    <!--
+
+    <StackLayout>
+
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+    </StackLayout>
+    
+    -->
+
+</ContentPage>
