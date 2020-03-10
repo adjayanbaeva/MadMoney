@@ -4,14 +4,70 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MadMoney.Page1">
-    <ContentPage.Content>
-        
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+             x:Class="MadMoney.AddExpense">
+    
+    <!--Header of the page-->
+    <StackLayout Spacing="8">
+        <Label Text="Add Expense"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-        
-    </ContentPage.Content>
+                HorizontalOptions="CenterAndExpand"
+               FontSize="40"
+               FontAttributes="Bold"/>
+
+        <!--Add description of expense section-->
+        <Label Text="Description" 
+               HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <Editor x:Name="ExpenseDescription"
+                Placeholder="Enter a description here"
+                HeightRequest="70"/>
+
+        <!--Add amount of expense section-->
+        <!--AT TODO: Need to add code to ensure input information is numerical-->
+        <Label Text="Amount" 
+                HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <Editor x:Name="ExpenseAmount"
+                Placeholder="Enter the amount here"
+                HeightRequest="70"/>
+
+        <!--Add Date of expense section-->
+        <Label Text="Date" 
+                HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <DatePicker VerticalOptions="CenterAndExpand"
+                Format="MM-dd-yyyy"/>
+
+        <!--Select category section-->
+        <Label Text="Category" 
+               HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <Picker Title="Select a Category">
+            <Picker.Items>
+                <x:String>Groceries</x:String>
+                <x:String>Restaurants</x:String>
+                <x:String>Rent</x:String>
+                <x:String>Healthcare</x:String>
+                <x:String>Gifts</x:String>
+                <x:String>TreatYoSelf</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!--Buttons Section-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Cancel"
+                    Clicked="OnCancelButton_Clicked"/>
+            <Button Grid.Column="1"
+                    Text="Save"
+                    Clicked="OnSaveButton_Clicked"/>
+        </Grid>
+    </StackLayout>
 </ContentPage>

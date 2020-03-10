@@ -42,5 +42,10 @@ namespace MadMoney
             MainPageTestManager.UpdateGoal(MainPageTestManager.GetTestMonth().BudgetGoal + 100);
             return;
         }
+
+        private void AddExpenseButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddExpense());
+        }
     }
 }

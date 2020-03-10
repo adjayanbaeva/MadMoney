@@ -10,11 +10,21 @@ using Xamarin.Forms.Xaml;
 namespace MadMoney
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class AddExpense : ContentPage
     {
-        public Page1()
+        public AddExpense()
         {
             InitializeComponent();
+        }
+
+        private void OnSaveButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnCancelButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -73,11 +73,13 @@
             <Button x:Name="AddExpenseButton_Top"
                 Text="Add Expense"
                 FontSize="22"
-                BackgroundColor="LightGreen"/>
-
+                BackgroundColor="LightGreen"
+                Clicked="AddExpenseButton_Clicked"/>
+            <!--ATNOTE:Consider changing this to Edit Expense button? Since currently we have 2 add expense buttons-->
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
+                
             <Label HorizontalOptions="CenterAndExpand"/>
 
             <Button x:Name="FilterExpensesButton"

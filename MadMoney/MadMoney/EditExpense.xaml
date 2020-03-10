@@ -17,7 +17,8 @@
             <Editor x:Name="Description"
                     Placeholder="Enter Expense Description here"
                     HeightRequest="100"/>
-            <
+            
+            
         </StackLayout>
         
     </ContentPage.Content>
