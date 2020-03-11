@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MadMoney.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,12 +20,11 @@ namespace MadMoney
 
         private void OnSaveButton_Clicked(object sender, EventArgs e)
         {
-
         }
 
         private void OnCancelButton_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PopAsync();
         }
     }
 }

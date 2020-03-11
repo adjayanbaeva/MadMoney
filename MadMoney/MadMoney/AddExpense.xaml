@@ -15,7 +15,8 @@
                FontAttributes="Bold"/>
 
         <!--Add description of expense section-->
-        <Label Text="Description" 
+        <Label x:Name="Descrip"
+                Text="Description" 
                HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
@@ -24,25 +25,29 @@
                 HeightRequest="70"/>
 
         <!--Add amount of expense section-->
-        <!--AT TODO: Need to add code to ensure input information is numerical-->
-        <Label Text="Amount" 
+        <Label x:Name="Amt"
+                Text="Amount" 
                 HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
         <Editor x:Name="ExpenseAmount"
                 Placeholder="Enter the amount here"
+                Keyboard="Numeric"
+                MaxLength="7"
                 HeightRequest="70"/>
 
         <!--Add Date of expense section-->
-        <Label Text="Date" 
+        <Label  x:Name="Date"
+                Text="Date" 
                 HorizontalOptions="Start"
-               FontSize="23"
-               TextColor="Purple"/>
+                FontSize="23"
+                TextColor="Purple"/>
         <DatePicker VerticalOptions="CenterAndExpand"
                 Format="MM-dd-yyyy"/>
 
         <!--Select category section-->
-        <Label Text="Category" 
+        <Label x:Name="Cat"
+                Text="Category" 
                HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
