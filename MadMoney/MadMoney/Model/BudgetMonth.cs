@@ -6,10 +6,8 @@ using System.Text;
 
 namespace MadMoney.Model
 {
-    // Baseline default implementation
-    public class BudgetMonth : INotifyPropertyChanged // ***TODO: Finish implementing this interface
-    // May ultimately be unnnecessary as an Expense may not
-    // change while it is bound to a UI control
+    public class BudgetMonth : INotifyPropertyChanged // ** TODO: Finish implementing this interface
+    // OR...May ultimately be unnnecessary
     // Bindings are re-established each time a Page is loaded, correct?
     // Following this guide for INotifyPropertyChanged:
     // https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/raise-change-notifications--bindingsource
@@ -42,11 +40,11 @@ namespace MadMoney.Model
 
         // Which constructors are desired?
         public BudgetMonth(decimal goal,
-                           DateTime date)
+                           DateTime monthAndYear)
         {
             expenseCollection = new List<Expense>();
             BudgetGoal = goal;
-            StartDate = date;
+            MonthAndYear = monthAndYear;
         }
         // the StartDate of the month can only be set as the
         // BudgetMonth is constructed
@@ -62,15 +60,27 @@ namespace MadMoney.Model
         }
         // Expense can go over budget goal
 
+
+
+        // TODO: Move AmountRemainingInBudgetGoal and any other methods
+        // that calculate and return 
+        // if it's not data that the Model stores, then it is something you calculate
+        // That calculation is business logic and belongs in the ViewModel
+        public decimal AmountRemainingInBudgetGoal { get; }
         // If AmountRemainingInBudgetGoal > 0, user has budget left this month
         // If AmountRemainingInBudgetGoal == 0, user has used up budget exactly
         // If AmountRemainingInBudgetGoal < 0, user has exceeded budget
-        public decimal AmountRemainingInBudgetGoal { get; }
 
-        // ??? A BudgetMonth's StartDate (that is the first of the month)
-        // Cannot be modified by users after the BudgetMonth is created
-        public DateTime StartDate { get; }
-        // explore using a different type for this?
+        // TODO:
+        // Any date in a month is valid input
+        // However, unlike Expense, extra data (that is: day, hour, minute, second)
+        // is truncated as it has no reasonable use.
+        // Specifically, MonthAndYear represents the duration of one month in a year
+        // rather than a specific point in the year
+        public DateTime MonthAndYear { get; }
+        
+
+
 
         public IEnumerable<Expense> Expenses {
             get { return expenseCollection; }
@@ -84,11 +94,11 @@ namespace MadMoney.Model
             expenseCollection.Add(exp);
         }
 
-        public void EditExpense(Guid guid) { }
+        public void EditExpense(string id) { }
         // How to specify which Expense to edit?
         // How to submit those edits?
 
-        public void DeleteExpense(Guid guid) { }
+        public void DeleteExpense(string id) { }
         // How to specify which Expense to delete?
 
 

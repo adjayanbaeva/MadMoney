@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MadMoney;
+using System.Linq;
 
 namespace MadMoney.ViewModel
 {
@@ -10,31 +12,30 @@ namespace MadMoney.ViewModel
     // Creates a dummy BudgetMonth so that the UI can bind to it
     public static class MainPageTestManager
     {
-
-
-        private static BudgetMonth february =
-             new BudgetMonth(2000M, DateTime.Parse("2020-02-01"));
-
         public static BudgetMonth GetTestMonth()
         {
-            february.AddExpense(
+            App.GlobalBudget.CreateNewMonth(2000M,
+                                            DateTime.Parse("2020-02-01"));
+
+            App.GlobalBudget.BudgetMonths.ToArray()[0].AddExpense(
                 new Expense("Trader Joe's",
                             42.50M,
                             DateTime.Parse("2020-02-01"),
                             ExpenseCategory.Groceries));
-            february.AddExpense(
+
+            App.GlobalBudget.BudgetMonths.ToArray()[0].AddExpense(
                 new Expense("Amazon.com",
                             125.37M,
                             DateTime.Parse("2020-02-13"),
                             ExpenseCategory.TreatYoSelf));
 
-            return february;
+            return App.GlobalBudget.BudgetMonths.ToArray()[0];
         }
 
 
         public static void UpdateGoal(decimal newGoal)
         {
-            february.BudgetGoal = newGoal;
+            App.GlobalBudget.BudgetMonths.ToArray()[0].BudgetGoal = newGoal;
         }
 
     }

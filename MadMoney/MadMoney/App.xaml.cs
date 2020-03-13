@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MadMoney.Model;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,6 +7,9 @@ namespace MadMoney
 {
     public partial class App : Application
     {
+        // Global budget instance
+        public static Budget GlobalBudget;
+
         public App()
         {
             InitializeComponent();
