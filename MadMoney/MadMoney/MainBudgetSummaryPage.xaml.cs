@@ -47,5 +47,16 @@ namespace MadMoney
         {
             Navigation.PushAsync(new AddExpense());
         }
+
+        private async void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new EditExpense
+                {
+                    BindingContext = e.SelectedItem as Expense
+                });
+            }
+        }
     }
 }

@@ -75,7 +75,6 @@
                 FontSize="22"
                 BackgroundColor="LightGreen"
                 Clicked="AddExpenseButton_Clicked"/>
-            <!--ATNOTE:Consider changing this to Edit Expense button? Since currently we have 2 add expense buttons-->
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
@@ -93,6 +92,7 @@
                 Also on ListView: ItemsSource="{Binding expenseCollection}"
                 Currently setting BindingContext instead in MainBudgetSummaryPage constructor -->
         <ListView x:Name="ExpensesListView"
+                  ItemSelected="ExpensesListView_ItemSelected"
                   ItemsSource="{Binding Expenses}">
             <ListView.ItemTemplate>
                 <DataTemplate>

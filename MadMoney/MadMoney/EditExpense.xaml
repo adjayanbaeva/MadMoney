@@ -7,19 +7,77 @@
              x:Class="MadMoney.EditExpense">
     
     <ContentPage.Content>
-        
-        <StackLayout>
-            
-            <Label Text="Edit New Expense"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="Start"/>
 
-            <Editor x:Name="Description"
-                    Placeholder="Enter Expense Description here"
-                    HeightRequest="100"/>
-            
-            
+        <!--Header of the page-->
+        <StackLayout Spacing="8">
+            <Label Text="Edit Expense"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+               FontSize="40"
+               FontAttributes="Bold"/>
+
+            <!--Add description of expense section-->
+            <Label x:Name="Descrip"
+                Text="Description" 
+               HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+            <Editor x:Name="ExpenseDescription"
+                Placeholder="Enter a description here"
+                HeightRequest="70"/>
+
+            <!--Add amount of expense section-->
+            <Label x:Name="Amt"
+                Text="Amount" 
+                HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+            <Editor x:Name="ExpenseAmount"
+                Placeholder="Enter the amount here"
+                Keyboard="Numeric"
+                MaxLength="7"
+                HeightRequest="70"/>
+
+            <!--Add Date of expense section-->
+            <Label  x:Name="Date"
+                Text="Date" 
+                HorizontalOptions="Start"
+                FontSize="23"
+                TextColor="Purple"/>
+            <DatePicker VerticalOptions="CenterAndExpand"
+                Format="MM-dd-yyyy"/>
+
+            <!--Select category section-->
+            <Label x:Name="Cat"
+                Text="Category" 
+               HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+            <Picker Title="Select a Category">
+                <Picker.Items>
+                    <x:String>Groceries</x:String>
+                    <x:String>Restaurants</x:String>
+                    <x:String>Rent</x:String>
+                    <x:String>Healthcare</x:String>
+                    <x:String>Gifts</x:String>
+                    <x:String>TreatYoSelf</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!--Buttons Section-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Text="Cancel"
+                        Clicked="OnCancelButton_Clicked"/>
+
+                <Button Grid.Column="1"
+                    Text="Save"
+                    Clicked="OnSaveButton_Clicked"/>
+            </Grid>
         </StackLayout>
-        
+
     </ContentPage.Content>
 </ContentPage> 
