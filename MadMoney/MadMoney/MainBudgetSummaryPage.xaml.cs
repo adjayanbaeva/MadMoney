@@ -15,16 +15,15 @@ namespace MadMoney
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
-        //private IEnumerable<Expense> expenseCollection;
 
         public MainBudgetSummaryPage()
         {
             //expenseCollection = MainPageTestManager.GetTestMonth().Expenses;
 
-
             BindingContext = MainPageTestManager.GetTestMonth();
 
             InitializeComponent();
+
 
 
         }
