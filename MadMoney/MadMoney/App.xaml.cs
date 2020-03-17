@@ -8,7 +8,7 @@ namespace MadMoney
     public partial class App : Application
     {
         // Global budget instance
-        public static Budget GlobalBudget;
+        public static Budget GlobalBudget = new Budget();
 
         public App()
         {
