@@ -14,20 +14,10 @@ namespace MadMoney.ViewModel
     {
         public static BudgetMonth GetTestMonth()
         {
-            App.GlobalBudget.CreateNewMonth(2000M,
-                                            DateTime.Parse("2020-02-01"));
 
-            App.GlobalBudget.BudgetMonths.ToArray()[0].AddExpense(
-                new Expense("Trader Joe's",
-                            42.50M,
-                            DateTime.Parse("2020-02-01"),
-                            ExpenseCategory.Groceries));
 
-            App.GlobalBudget.BudgetMonths.ToArray()[0].AddExpense(
-                new Expense("Amazon.com",
-                            125.37M,
-                            DateTime.Parse("2020-02-13"),
-                            ExpenseCategory.TreatYoSelf));
+
+
 
             return App.GlobalBudget.BudgetMonths.ToArray()[0];
         }

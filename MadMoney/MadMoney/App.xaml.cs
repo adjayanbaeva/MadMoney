@@ -16,6 +16,9 @@ namespace MadMoney
         {
             InitializeComponent();
 
+            App.GlobalBudget.CreateNewMonth(2000M,
+                                DateTime.Parse("2020-03-01"));
+
             MainPage = new MainBudgetSummaryPage();
         }
 
