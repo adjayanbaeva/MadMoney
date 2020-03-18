@@ -56,6 +56,19 @@ namespace MadMoney.Model
                 DateTimeUtility.IsSameMonthYear(month.MonthYear, monthYear)).BudgetGoal;
         }
 
+        public void SetBudgetGoalByMonthYear(decimal goal, DateTime monthYear)
+        {
+            // If the month specified by the caller doesn't exist, throw
+            if (false == budgetMonths.Exists(month =>
+                DateTimeUtility.IsSameMonthYear(month.MonthYear, monthYear)))
+            {
+                throw new ArgumentException($"No budget exists for {monthYear.ToString()}. Cannot set goal.");
+            }
+
+            budgetMonths.Find(month =>
+                DateTimeUtility.IsSameMonthYear(month.MonthYear, monthYear)).BudgetGoal = goal;
+        }
+
         public void AddExpense(string expDescrip,
                                decimal expAmt,
                                DateTime expDate,

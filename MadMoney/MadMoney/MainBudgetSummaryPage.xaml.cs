@@ -13,6 +13,8 @@ namespace MadMoney
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
+        private MainBudgetSummaryPageViewModel ViewModel;
+
 
         public MainBudgetSummaryPage()
         {
@@ -28,15 +30,13 @@ namespace MadMoney
                             ExpenseCategory.Groceries);
 
 
+
             // BindingContext = App.GlobalBudget.GetBudgetMonthByMonthYear(
             //                        App.GlobalViewData.CurrentlyDisplayedMonthYear);
 
+          
 
-            BindingContext = new MainBudgetSummaryPageViewModel();
-
-
-
-
+            BindingContext = ViewModel = new MainBudgetSummaryPageViewModel();
 
 
 
@@ -67,13 +67,13 @@ namespace MadMoney
             // Simlar demo code for Ainur's Save button on the GetGoal page
             //App.GlobalBudget.CreateNewMonth(amt, date);
 
-            MainPageTestManager.UpdateGoal( MainPageTestManager.GetTestMonth().BudgetGoal - 100);
+            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal - 100);
             return;
         }
 
         private void NextMonthButton_Pressed(object sender, EventArgs e)
         {
-            MainPageTestManager.UpdateGoal(MainPageTestManager.GetTestMonth().BudgetGoal + 100);
+            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal + 100);
             return;
         }
 

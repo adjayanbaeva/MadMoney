@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using MadMoney.Model;
 
@@ -21,6 +22,14 @@ namespace MadMoney.ViewModel
 
         }
 
+
+        // For testing purposes only
+        public static void UpdateGoal(decimal newGoal)
+        {
+            App.GlobalBudget.GetBudgetMonthByMonthYear(App.GlobalViewData.CurrentlyDisplayedMonthYear).BudgetGoal = newGoal;
+
+        }
+
         //public IEnumerable<Expense> Expenses
         //{
         //    get
@@ -28,6 +37,10 @@ namespace MadMoney.ViewModel
         //        return App.GlobalBudget.GetBudgetMonthByMonthYear(;
         //    }
         //}
+
+
+
+        
 
 
     }
