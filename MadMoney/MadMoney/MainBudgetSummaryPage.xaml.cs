@@ -13,10 +13,22 @@ namespace MadMoney
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
-
         public MainBudgetSummaryPage()
         {
-            BindingContext = MainPageTestManager.GetTestMonth();
+            App.GlobalBudget.AddExpense("Amazon.com",
+                            125.37M,
+                            DateTime.Parse("2020-03-13"),
+                            ExpenseCategory.TreatYoSelf);
+
+
+            App.GlobalBudget.AddExpense("Trader Joe's",
+                            42.50M,
+                            DateTime.Parse("2020-03-01"),
+                            ExpenseCategory.Groceries);
+
+
+            BindingContext = App.GlobalBudget.GetBudgetMonthByMonthYear(
+                                    App.GlobalViewData.CurrentlyDisplayedMonthYear);
 
             InitializeComponent();
 
@@ -53,6 +65,16 @@ namespace MadMoney
         {
             MainPageTestManager.UpdateGoal(MainPageTestManager.GetTestMonth().BudgetGoal + 100);
             return;
+        }
+
+        private void AddExpenseButton_Top_Pressed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FilterExpensesButton_Pressed(object sender, EventArgs e)
+        {
+
         }
     }
 }

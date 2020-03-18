@@ -40,11 +40,11 @@ namespace MadMoney.Model
 
         // Which constructors are desired?
         public BudgetMonth(decimal goal,
-                           DateTime monthAndYear)
+                           DateTime monthYear)
         {
             expenseCollection = new List<Expense>();
             BudgetGoal = goal;
-            MonthAndYear = monthAndYear;
+            MonthYear = monthYear;
         }
         // the StartDate of the month can only be set as the
         // BudgetMonth is constructed
@@ -74,9 +74,9 @@ namespace MadMoney.Model
         // Any date in a month is valid input
         // However, unlike Expense, extra data (that is: day, hour, minute, second)
         // is truncated as it has no reasonable use.
-        // Specifically, MonthAndYear represents the duration of one month in a year
+        // Specifically, MonthYear represents the duration of one month in a year
         // rather than a specific point in the year
-        public DateTime MonthAndYear { get; }
+        public DateTime MonthYear { get; }
         
 
 

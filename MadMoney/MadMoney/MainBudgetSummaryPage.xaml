@@ -74,7 +74,8 @@
             <Button x:Name="AddExpenseButton_Top"
                 Text="Add Expense"
                 FontSize="22"
-                BackgroundColor="LightGreen"/>
+                BackgroundColor="LightGreen"
+                Pressed="AddExpenseButton_Top_Pressed"/>
 
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
@@ -84,7 +85,8 @@
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
                 FontSize="22"
-                BackgroundColor="LightBlue"/>
+                BackgroundColor="LightBlue"
+                Pressed="FilterExpensesButton_Pressed"/>
         </StackLayout>
 
 
