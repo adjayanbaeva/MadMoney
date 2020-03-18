@@ -13,6 +13,7 @@ namespace MadMoney
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
+
         public MainBudgetSummaryPage()
         {
             App.GlobalBudget.AddExpense("Amazon.com",
@@ -27,8 +28,17 @@ namespace MadMoney
                             ExpenseCategory.Groceries);
 
 
-            BindingContext = App.GlobalBudget.GetBudgetMonthByMonthYear(
-                                    App.GlobalViewData.CurrentlyDisplayedMonthYear);
+            // BindingContext = App.GlobalBudget.GetBudgetMonthByMonthYear(
+            //                        App.GlobalViewData.CurrentlyDisplayedMonthYear);
+
+
+            BindingContext = new MainBudgetSummaryPageViewModel();
+
+
+
+
+
+
 
             InitializeComponent();
 
