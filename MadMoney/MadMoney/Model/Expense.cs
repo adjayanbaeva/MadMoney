@@ -29,6 +29,9 @@ namespace MadMoney.Model
         TreatYoSelf
     }
 
+
+
+
     public class Expense // : INotifyPropertyChanged <- May not need this
         // May ultimately be unnnecessary as I don't think that an Expense
         // can change while a page is loaded (rather between pages)

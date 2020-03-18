@@ -1,4 +1,5 @@
 ﻿using MadMoney.Model;
+using MadMoney.View;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,7 @@ namespace MadMoney
     {
         // Global budget instance
         public static Budget GlobalBudget = new Budget();
+        public static ViewData GlobalViewData = new ViewData();
 
         public App()
         {

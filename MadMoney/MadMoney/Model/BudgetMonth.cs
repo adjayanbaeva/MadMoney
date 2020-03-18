@@ -61,7 +61,6 @@ namespace MadMoney.Model
         // Expense can go over budget goal
 
 
-
         // TODO: Move AmountRemainingInBudgetGoal and any other methods
         // that calculate and return 
         // if it's not data that the Model stores, then it is something you calculate

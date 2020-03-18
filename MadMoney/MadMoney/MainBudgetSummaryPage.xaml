@@ -37,7 +37,8 @@
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
             <Label Text="💲"/>
-            <Label Text="{Binding BudgetGoal}"/>
+            <Label x:Name="BudgetGoalText"
+                   Text="{Binding BudgetGoal}"/>
             <Label Text="🖍️"/>
 
         </StackLayout>
@@ -125,6 +126,7 @@
         </ListView>
 
 
+        <!-- TODO: Remove this  -->
         <Button x:Name="AddExpenseButton_Bottom"
                 Text="Add Expense"
                 FontSize="22"

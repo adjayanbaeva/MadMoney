@@ -10,27 +10,40 @@ using Xamarin.Forms;
 
 namespace MadMoney
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
 
         public MainBudgetSummaryPage()
         {
-            //expenseCollection = MainPageTestManager.GetTestMonth().Expenses;
-
             BindingContext = MainPageTestManager.GetTestMonth();
 
             InitializeComponent();
 
-
-
+            // Demo code from when discussing with Ainur about possibilities
+            // for not showing a 0 (or any default value) in the set goal field
+            // the first time that the page is shown
+            // BudgetGoalText.Text = String.Empty;
         }
 
         private void PreviousMonthButton_Pressed(object sender, EventArgs e)
         {
 
+
+            // Demo code for when we were pretending that this was Andrea's
+            // Event handler for her Save Expense button handler
+            // (or more properly, the ViewModel method that the event handler
+            // calls)
+            // Maintaining it here for reference for the time being
+            //string des = "Trader Joe's";
+            //decimal amt = 245.90M;
+            //DateTime date = DateTime.Parse("2020-02-01");
+            //ExpenseCategory cat = ExpenseCategory.Groceries;
+            //App.GlobalBudget.AddExpense(des, amt, date, cat);
+
+
+            // Simlar demo code for Ainur's Save button on the GetGoal page
+            //App.GlobalBudget.CreateNewMonth(amt, date);
 
             MainPageTestManager.UpdateGoal( MainPageTestManager.GetTestMonth().BudgetGoal - 100);
             return;

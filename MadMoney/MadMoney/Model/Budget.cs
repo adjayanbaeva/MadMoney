@@ -32,6 +32,14 @@ namespace MadMoney.Model
             // exists for any one calendar month
         }
 
+        public void AddExpense(string descrip,
+                       decimal amt,
+                       DateTime date,
+                       ExpenseCategory cat)
+        {
+            budgetMonths[0].AddExpense(new Expense(descrip, amt, date, cat));
+
+        }
 
         // The design doesn't provide for deleting a budget month
         // public void DeleteBudget(DateTime month) { }
