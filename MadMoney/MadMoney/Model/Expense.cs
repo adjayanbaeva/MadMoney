@@ -32,6 +32,18 @@ namespace MadMoney.Model
 
 
 
+
+    public class ExpenseCategory2
+    {
+        public ExpenseCategory Category { get; set; }
+
+
+    }
+
+
+
+
+
     public class Expense // : INotifyPropertyChanged <- May not need this
         // May ultimately be unnnecessary as I don't think that an Expense
         // can change while a page is loaded (rather between pages)
