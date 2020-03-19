@@ -1,50 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
 namespace MadMoney.Model
 {
-    // ? Write a proposal for this class
-  
-    //public class ExpenseCategory2
-    //{
-    //    public char Emoji { get; set; }
-    //    public string Name { get; set; }
-    //}
-
-    
-    // TODO (Lynn):
-    // ExpenseCategory more appropriately its own class type
-    // rather than just an enum.
-    // to contain the emoji that corresponds to each category
-    // as well as the string the corresponds to each category
-    public enum ExpenseCategory
-    { 
-        Groceries,
-        Restaurants,
-        Rent,
-        Healthcare,
-        Gifts,
-        TreatYoSelf
-    }
-
-
-
-
-
-    public class ExpenseCategory2
-    {
-        public ExpenseCategory Category { get; set; }
-
-
-    }
-
-
-
-
-
-    public class Expense // : INotifyPropertyChanged <- May not need this
+        public class Expense // : INotifyPropertyChanged <- May not need this
         // May ultimately be unnnecessary as I don't think that an Expense
         // can change while a page is loaded (rather between pages)
         // Bindings are re-established each time a Page is loaded, correct?
@@ -132,13 +92,14 @@ namespace MadMoney.Model
 
 
         /// <summary>
-        /// Category of the Expense. (Currently of ExpenseCategory enum type.)
+        /// Category of the Expense.
         /// Example: Groceries
         /// </summary>
-        // TODO: Needs to be updated to be of the type of the enum class wrapper type
-        // that Lynn is working on this as a part of Filter Expenses page development
-        // This new class type to get its own cs file, correct?
         public ExpenseCategory Category { get; set; }
+        // TODO: Remember when serializing this property to file
+        // Serialize as the string representation of the enum
+        // Not the value. String is sturdier. More likely to withstand
+        // changes to the enum between between builds of the app
 
 
         // ** NOTE:
@@ -149,6 +110,5 @@ namespace MadMoney.Model
         // Subjective whether file i/o class should be interacted with
         // by the ViewModel or the Model
         // Pros and cons for each
-        // TODO: Ask Kal/TAs
     }
 }

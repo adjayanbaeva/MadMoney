@@ -13,27 +13,20 @@ namespace MadMoney
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
-        private MainBudgetSummaryPageViewModel ViewModel;
-
+        private MainBudgetSummaryPageViewModel ViewModel = null;
 
         public MainBudgetSummaryPage()
         {
             App.GlobalBudget.AddExpense("Amazon.com",
                             125.37M,
                             DateTime.Parse("2020-03-13"),
-                            ExpenseCategory.TreatYoSelf);
+                            ExpenseCategory.Enum.TreatYoSelf);
 
 
             App.GlobalBudget.AddExpense("Trader Joe's",
                             42.50M,
                             DateTime.Parse("2020-03-01"),
-                            ExpenseCategory.Groceries);
-
-
-
-            // BindingContext = App.GlobalBudget.GetBudgetMonthByMonthYear(
-            //                        App.GlobalViewData.CurrentlyDisplayedMonthYear);
-
+                            ExpenseCategory.Enum.Groceries);
           
 
             BindingContext = ViewModel = new MainBudgetSummaryPageViewModel();
@@ -60,7 +53,7 @@ namespace MadMoney
             //string des = "Trader Joe's";
             //decimal amt = 245.90M;
             //DateTime date = DateTime.Parse("2020-02-01");
-            //ExpenseCategory cat = ExpenseCategory.Groceries;
+            //ExpenseCategory.Enum cat = ExpenseCategory.Enum.Groceries;
             //App.GlobalBudget.AddExpense(des, amt, date, cat);
 
 

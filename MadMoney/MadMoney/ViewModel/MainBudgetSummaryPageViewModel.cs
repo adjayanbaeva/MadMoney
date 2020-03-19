@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using MadMoney.Model;
@@ -22,13 +23,24 @@ namespace MadMoney.ViewModel
 
         }
 
+        public ReadOnlyCollection<ExpenseCategory> ExpenseCategories
+        {
+            get
+            {
+                return ExpenseCategoryManager.Collection;
+            }
+        }
+
 
         // For testing purposes only
         public static void UpdateGoal(decimal newGoal)
         {
-            App.GlobalBudget.GetBudgetMonthByMonthYear(App.GlobalViewData.CurrentlyDisplayedMonthYear).BudgetGoal = newGoal;
+            App.GlobalBudget.GetBudgetMonthByMonthYear(
+                App.GlobalViewData.CurrentlyDisplayedMonthYear).BudgetGoal = newGoal;
 
         }
+
+
 
         //public IEnumerable<Expense> Expenses
         //{
