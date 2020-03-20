@@ -12,21 +12,8 @@ namespace MadMoney.ViewModel
     // Creates a dummy BudgetMonth so that the UI can bind to it
     public static class MainPageTestManager
     {
-        public static BudgetMonth GetTestMonth()
-        {
 
 
-
-
-
-            return App.GlobalBudget.BudgetMonths.ToArray()[0];
-        }
-
-
-        public static void UpdateGoal(decimal newGoal)
-        {
-            App.GlobalBudget.BudgetMonths.ToArray()[0].BudgetGoal = newGoal;
-        }
 
     }
 }
