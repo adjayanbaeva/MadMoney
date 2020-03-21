@@ -1,72 +1,114 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
 namespace MadMoney.Model
 {
-    public enum ExpenseCategory
+        public class Expense // : INotifyPropertyChanged <- May not need this
+        // May ultimately be unnnecessary as I don't think that an Expense
+        // can change while a page is loaded (rather between pages)
+        // Bindings are re-established each time a Page is loaded, correct?
     {
-        Groceries,
-        Restaurants,
-        Rent,
-        Healthcare,
-        Gifts,
-        TreatYoSelf
-    }
-
-    // Baseline default implementation
-    public class Expense // : INotifyPropertyChanged
-                         // None of my test data changes Expenses yet
-                         // May ultimately be unnnecessary as an Expense may not
-                         // change while it is bound to a UI control
-                         // Bindings are re-established each time a Page is loaded, correct?
-
-    //AT Notes: we only need to bind to the picker soundcategory class that will be created
-    //AT Notes: Since expense object has not yet been created, need to instantiate the object to save the information: View has the infomration and gives it to view model and says, 
-    //here's the information, and the viewmodel creates the object with the new expense
-    //BindingContext = newAddExpenseViewMode;();
-
-
-    
-    {
-        // Which constructors are desired?
-        public Expense(ExpenseCategory cat)
-        {
-            Category = cat;
-        }
+        /// <summary>
+        /// Constructor for new created Expenses.
+        /// </summary>
+        /// <param name="descrip"></param>
+        /// <param name="amt"></param>
+        /// <param name="date"></param>
+        /// <param name="cat"></param>
         public Expense(string descrip,
                        decimal amt,
                        DateTime date,
                        ExpenseCategory cat)
         {
-            Guid = Guid.NewGuid();
+            _id = Guid.NewGuid();
+            Description = descrip;
+            Amount = amt;
+            Date = date;
+            Category = cat;
+        }
+        /// <summary>
+        /// Constructor for Expenses deserialized from file.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="descrip"></param>
+        /// <param name="amt"></param>
+        /// <param name="date"></param>
+        /// <param name="cat"></param>
+        public Expense(string id,
+                       string descrip,
+                       decimal amt,
+                       DateTime date,
+                       ExpenseCategory cat)
+        {
+            _id = new Guid(id);
             Description = descrip;
             Amount = amt;
             Date = date;
             Category = cat;
         }
 
-        public Guid Guid { get; }
-        // Immutable after construction
-        public string Description { get; set; }
-        public decimal Amount { get; set; }
-        public DateTime Date { get; set; }
-        public ExpenseCategory Category { get; set; }
+        /// <summary>
+        /// Data field that backs Id property
+        /// </summary>
+        private Guid _id;
 
-        public bool IsValidAmount() { return true; }
+        /// <summary>
+        /// Unique identifier for the Expense.
+        /// Example: 0f8fad5b-d9cb-469f-a165-70867728950e
+        /// </summary>
+        // Immutable after construction / deserialization from disk
+        public string Id
+        {
+            get { return _id.ToString(); }
+        }
+
+        /// <summary>
+        /// Name that describes the Expense.
+        /// Example: "Trader Joe's"
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Amount of the Expense in USD dollars and cents.
+        /// Example: $42.50
+        /// </summary>
+        public decimal Amount { get; set; }
+        // TODO: ViewModel(s) to validate user input before constructing an
+        // Expense (two decimal places)
+        // Could be put in a shared utility class for the Set Goal, Add Expense
+        // and Edit Expense pages.
+        // Or, both Ainur and Andrea could implement it independently for practice.
+        // Also support (but don't require) comma seperators
+        // Either way works for Brillan.
+
+        /// <summary>
+        /// Year, month and day of the Expense.
+        /// Example: 2020-02-01 (February 1, 2020)
+        /// Note: Time (hour, minute, second) is accepted and stored for
+        /// future use.
+        /// </summary>
+        public DateTime Date { get; set; }
+
+
+        /// <summary>
+        /// Category of the Expense.
+        /// Example: Groceries
+        /// </summary>
+        public ExpenseCategory Category { get; set; }
+        // TODO: Remember when serializing this property to file
+        // Serialize as the string representation of the enum
+        // Not the value. String is sturdier. More likely to withstand
+        // changes to the enum between between builds of the app
+
+
+        // ** NOTE:
+        // Shift in advice about where data validation logic belongs
+        // I think that I may have misunderstood this before
+        // it's business logic data, so it belongs in the ViewModel(s)
+        // Model's job to implement the in-memory data store
+        // Subjective whether file i/o class should be interacted with
+        // by the ViewModel or the Model
+        // Pros and cons for each
     }
 }
-        // need more user input validation methods
-
-
-        // complete properties on Expense class
-
-
-        // View should ask ViewModel to ask Model about
-        // what is valid for each of these properties, correct?
-        // Not the View's job to make this decision
-        // It's the Model's job to know what is valid
-        // Seems relevant to put these methods on the Model
-        // class directly, versus in a helper class
-        // Maybe as a nested/inner class?
