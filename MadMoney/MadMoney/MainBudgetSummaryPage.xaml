@@ -18,7 +18,7 @@
                 Pressed="PreviousMonthButton_Pressed"/>
 
             <Label x:Name="CurrentMonthLabel"
-                Text="February 2020"
+                Text="{Binding MonthYear_ForCurrentlyShownMonth_String}"
                 FontSize="30"
                 HorizontalOptions="CenterAndExpand"/>
 

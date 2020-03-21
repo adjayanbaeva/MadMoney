@@ -14,6 +14,14 @@ namespace MadMoney.ViewModel
         
         }
 
+        public string MonthYear_ForCurrentlyShownMonth_String
+        {
+            get
+            {
+                return App.GlobalViewData.CurrentlyDisplayedMonthYear.ToString("MMMM yyyy");
+            }
+        }
+
         public decimal BudgetGoal_ForCurrentlyShownMonth_Decimal
         {
             get
