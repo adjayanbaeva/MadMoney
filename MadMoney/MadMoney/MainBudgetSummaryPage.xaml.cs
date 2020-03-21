@@ -27,7 +27,27 @@ namespace MadMoney
                             42.50M,
                             DateTime.Parse("2020-03-01"),
                             ExpenseCategory.Enum.Groceries);
-          
+
+            App.GlobalBudget.AddExpense("Veggie Grill",
+                            29.65M,
+                            DateTime.Parse("2020-03-29"),
+                            ExpenseCategory.Enum.Restaurants);
+
+            App.GlobalBudget.AddExpense("Sanrio",
+                            76.34M,
+                            DateTime.Parse("2020-03-25"),
+                            ExpenseCategory.Enum.Gifts);
+
+            App.GlobalBudget.AddExpense("Rent",
+                            1000M,
+                            DateTime.Parse("2020-03-1"),
+                            ExpenseCategory.Enum.Rent);
+
+            App.GlobalBudget.AddExpense("Copay",
+                            20M,
+                            DateTime.Parse("2020-03-12"),
+                            ExpenseCategory.Enum.Healthcare);
+
 
             BindingContext = ViewModel = new MainBudgetSummaryPageViewModel();
 

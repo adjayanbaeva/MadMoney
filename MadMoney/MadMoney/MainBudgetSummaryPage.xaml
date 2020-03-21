@@ -135,7 +135,7 @@
                                     and right justify -->
                                     <Label HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="💲"/>
-                                    <Label Text="{Binding Amount}"/>
+                                    <Label Text="{Binding Amount, StringFormat='{0:N2}'}"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
