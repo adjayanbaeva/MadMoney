@@ -18,8 +18,11 @@ namespace MadMoney
             InitializeComponent();
         }
 
-        private void OnSaveButton_Clicked(object sender, EventArgs e)
+        async void OnSaveButton_Clicked(object sender, EventArgs e)
         {
+            
+
+            await Navigation.PopAsync();   
         }
 
         private void OnCancelButton_Clicked(object sender, EventArgs e)

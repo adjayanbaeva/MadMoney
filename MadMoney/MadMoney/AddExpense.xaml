@@ -21,6 +21,7 @@
                FontSize="23"
                TextColor="Purple"/>
         <Editor x:Name="ExpenseDescription"
+                Text="{Binding Description}"
                 Placeholder="Enter a description here"
                 HeightRequest="70"/>
 
@@ -31,6 +32,7 @@
                FontSize="23"
                TextColor="Purple"/>
         <Editor x:Name="ExpenseAmount"
+                Text="{Binding Amount}"
                 Placeholder="Enter the amount here"
                 Keyboard="Numeric"
                 MaxLength="7"
@@ -43,7 +45,8 @@
                 FontSize="23"
                 TextColor="Purple"/>
         <DatePicker VerticalOptions="CenterAndExpand"
-                Format="MM-dd-yyyy"/>
+                Format="MM-dd-yyyy"
+                />
 
         <!--Select category section-->
         <Label x:Name="Cat"
@@ -51,15 +54,19 @@
                HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
-        <Picker Title="Select a Category">
-            <Picker.Items>
-                <x:String>Groceries</x:String>
-                <x:String>Restaurants</x:String>
-                <x:String>Rent</x:String>
-                <x:String>Healthcare</x:String>
-                <x:String>Gifts</x:String>
-                <x:String>TreatYoSelf</x:String>
-            </Picker.Items>
+        <Picker Title="Select a Category"
+                ItemsSource="{Binding ExCategory}"
+                ItemDisplayBinding="{Binding Category}">
+            <!--ItemsSource ="{Binding Expense}"-->
+                <!--ItemDisplayBinding="{Binding Category, Mode=TwoWay}"-->
+            <!--<Picker.Items>
+                <x:string>Groceries</x:ExpenseCategory>
+                <x:ExpenseCategory>Restaurants</x:ExpenseCategory>
+                <x:ExpenseCategory>Rent</x:ExpenseCategory>
+                <x:ExpenseCategory>Healthcare</x:ExpenseCategory>
+                <x:ExpenseCategory>Gifts</x:ExpenseCategory>
+                <x:ExpenseCategory>TreatYoSelf</x:ExpenseCategory>
+            </Picker.Items>-->
         </Picker>
 
         <!--Buttons Section-->

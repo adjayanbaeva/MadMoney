@@ -46,6 +46,7 @@ namespace MadMoney
         private void AddExpenseButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AddExpense());
+
         }
 
         private async void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
