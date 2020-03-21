@@ -38,7 +38,7 @@
             <Label HorizontalOptions="CenterAndExpand"/>
             <Label Text="💲"/>
             <Label x:Name="BudgetGoalText"
-                   Text="{Binding BudgetGoal}"/>
+                   Text="{Binding BudgetGoal_ForCurrentlyShownMonth_String}"/>
             <Label Text="🖍️"/>
 
         </StackLayout>
@@ -50,7 +50,11 @@
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
-            <Label Text="💲1,457.0"/>
+            <Label Text="💲"/>
+            <Label x:Name="BudgetRemainingText"
+                   Text="{Binding BudgetRemaining_ForCurrentlyShownMonth_String}"/>
+            <!-- TODO: Update color/icon to reflect whether the user is below,
+            at, or beyond their budget goal. -->
             <Label Text="🆗"/>
 
         </StackLayout>
@@ -62,7 +66,9 @@
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
-            <Label Text="💲543.00"/>
+            <Label Text="💲"/>
+            <Label x:Name="TotalExpensesText"
+                   Text="{Binding TotalExpenses_ForCurrentlyShownMonth_String}"/>
             <Label Text="💸"/>
 
         </StackLayout>
@@ -91,24 +97,6 @@
 
 
         <StackLayout>
-
-            <!-- FOR ANDREA: EXAMPLE CATEGORY DATA BINDING -->
-            <ListView x:Name="DemoExpenseCategoryListView"
-                      ItemsSource="{Binding ExpenseCategories}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Emoji}"/>
-                                    <Label Text="{Binding Name}"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
 
             <!-- TODO: Why is this not working? on DataTemplate: x:DataType="data:Expense"
                     Also on ListView: ItemsSource="{Binding expenseCollection}"

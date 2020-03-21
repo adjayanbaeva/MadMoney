@@ -44,10 +44,17 @@ namespace MadMoney.Model
         }
 
 
+        // Ideally remove this method in the interest of making BudgetMonth
+        // a class that is internal to the Model implementation
         public BudgetMonth GetBudgetMonthByMonthYear(DateTime monthYear)
         {
             return budgetMonths.Find(month =>
                     DateTimeUtility.IsSameMonthYear(month.MonthYear, monthYear));
+        }
+
+        public IEnumerable<Expense> GetExpensesByMonthYear(DateTime monthYear)
+        {
+            return GetBudgetMonthByMonthYear(monthYear).Expenses;
         }
 
         public decimal GetBudgetGoalByMonthYear(DateTime monthYear)
@@ -85,6 +92,7 @@ namespace MadMoney.Model
             if (budgetMonthOfExpense == null)
             {
                 // TODO: LOOK UP WHAT THE GOAL SHOULD BE FOR A NEW MONTH THAT IS CREATED FROM ADD EXPENSE
+                // REVIEW THE DESIGN TO SEE WHERE WE SHOULD GET THIS FROM.
                 budgetMonths.Add(new BudgetMonth(
                         999999M, DateTimeUtility.TruncateToMonthYear(expDate)));
 

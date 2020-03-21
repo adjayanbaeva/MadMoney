@@ -60,13 +60,13 @@ namespace MadMoney
             // Simlar demo code for Ainur's Save button on the GetGoal page
             //App.GlobalBudget.CreateNewMonth(amt, date);
 
-            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal - 100);
+            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal_ForCurrentlyShownMonth_Decimal - 100);
             return;
         }
 
         private void NextMonthButton_Pressed(object sender, EventArgs e)
         {
-            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal + 100);
+            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal_ForCurrentlyShownMonth_Decimal + 100);
             return;
         }
 
