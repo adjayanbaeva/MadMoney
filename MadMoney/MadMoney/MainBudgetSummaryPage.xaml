@@ -14,18 +14,19 @@
             <Button x:Name="PreviousMonthButton"
                 Text="👈"
                 FontSize="30"
-                BackgroundColor="Purple"
+                BackgroundColor="MediumPurple"
                 Pressed="PreviousMonthButton_Pressed"/>
 
             <Label x:Name="CurrentMonthLabel"
                 Text="{Binding MonthYear_ForCurrentlyShownMonth_String}"
                 FontSize="30"
-                HorizontalOptions="CenterAndExpand"/>
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
 
             <Button x:Name="NextMonthButton"
                 Text="👉"
                 FontSize="30"
-                BackgroundColor="Purple"
+                BackgroundColor="MediumPurple"
                 Pressed="NextMonthButton_Pressed"/>
         </StackLayout>
 
@@ -79,7 +80,7 @@
 
             <Button x:Name="AddExpenseButton_Top"
                 Text="Add Expense"
-                FontSize="22"
+                FontSize="16"
                 BackgroundColor="LightGreen"
                 Pressed="AddExpenseButton_Top_Pressed"/>
 
@@ -88,9 +89,20 @@
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
 
+            <Button x:Name="EditBudgetGoalButton"
+                Text="Edit Goal"
+                FontSize="16"
+                BackgroundColor="LightSalmon"
+                Pressed="EditBudgetGoalButton_Pressed"/>
+
+            <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+            <Label HorizontalOptions="CenterAndExpand"/>
+
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
-                FontSize="22"
+                FontSize="16"
                 BackgroundColor="LightBlue"
                 Pressed="FilterExpensesButton_Pressed"/>
         </StackLayout>
@@ -113,11 +125,11 @@
                                     I can't figure out how else to do the left
                                     and right justify -->
                                     <Label HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="🍎"/>
+                                    <Label Text="{Binding Category.Emoji}"/>
                                     <!-- TODO: Update once emoji conversions are in -->
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Date}"/>
+                                    <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}"/>
                                     <!-- TODO: Fix this empty Label hack for 
                                     I can't figure out how else to do the left
                                     and right justify -->
@@ -132,19 +144,16 @@
             </ListView>
 
 
-
-
-            
         </StackLayout>
 
             
             
             
-            <!-- TODO: Remove this? Depends on whether the Add Expense button
+        <!-- TODO: Remove this? Depends on whether the Add Expense button
         at the top of the page is visible or not -->
         <Button x:Name="AddExpenseButton_Bottom"
                 Text="Add Expense"
-                FontSize="22"
+                FontSize="16"
                 BackgroundColor="LightGreen"/>
 
     </StackLayout>

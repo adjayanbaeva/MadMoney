@@ -101,17 +101,22 @@ namespace MadMoney.ViewModel
 
 
 
-        //public IEnumerable<Expense> Expenses
-        //{
-        //    get
-        //    {
-        //        return App.GlobalBudget.GetBudgetMonthByMonthYear(;
-        //    }
-        //}
+        // Ideally, the ViewModel would do string formatting for the View for expenses
+        // I think this would involve programmatically configuring the ItemTemplate,
+        // DataTemplate, or ViewCell of the ListView
+        // For now, setting the formatting directly in the XAML
+        public IEnumerable<Expense> Expenses
+        {
+            get
+            {
+                return App.GlobalBudget.GetBudgetMonthByMonthYear(
+                            App.GlobalViewData.CurrentlyDisplayedMonthYear).Expenses;
+            }
+        }
 
 
 
-        
+
 
 
     }

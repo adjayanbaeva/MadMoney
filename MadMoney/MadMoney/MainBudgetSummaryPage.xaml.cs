@@ -79,5 +79,10 @@ namespace MadMoney
         {
 
         }
+
+        private void EditBudgetGoalButton_Pressed(object sender, EventArgs e)
+        {
+
+        }
     }
 }
