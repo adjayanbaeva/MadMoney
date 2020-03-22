@@ -58,22 +58,13 @@ namespace MadMoney.Model
                     NotifyPropertyChanged();
                 }
         }
-        // Expense can go over budget goal
+        // Design allows for expenses to exceed the budget goal
 
-
-        // TODO: Move AmountRemainingInBudgetGoal and any other methods
-        // that calculate and return 
-        // if it's not data that the Model stores, then it is something you calculate
-        // That calculation is business logic and belongs in the ViewModel
-        public decimal AmountRemainingInBudgetGoal { get; }
-        // If AmountRemainingInBudgetGoal > 0, user has budget left this month
-        // If AmountRemainingInBudgetGoal == 0, user has used up budget exactly
-        // If AmountRemainingInBudgetGoal < 0, user has exceeded budget
 
         // TODO:
         // Any date in a month is valid input
-        // However, unlike Expense, extra data (that is: day, hour, minute, second)
-        // is truncated as it has no reasonable use.
+        // However, unlike Expense, *** extra data (that is: day, hour, minute, second)
+        // is truncated as it has no reasonable use. ***
         // Specifically, MonthYear represents the duration of one month in a year
         // rather than a specific point in the year
         public DateTime MonthYear { get; }
@@ -84,9 +75,7 @@ namespace MadMoney.Model
         public IEnumerable<Expense> Expenses {
             get { return expenseCollection; }
         }
-        // Instead of: public IEnumerable<Expense> GetExpenses() { return null; }
 
-        // may need to provide additional ways to access/modify Expense collection
 
         public void AddExpense(Expense exp)
         {
