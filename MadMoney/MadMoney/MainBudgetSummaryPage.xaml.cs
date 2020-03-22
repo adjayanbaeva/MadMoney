@@ -166,7 +166,12 @@ namespace MadMoney
 
         private void EditBudgetGoalButton_Pressed(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new AddExpense());
+        }
 
+        private void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new EditExpense());
         }
     }
 }

@@ -38,6 +38,7 @@
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
             <Label Text="💲"/>
+
             <Label x:Name="BudgetGoalText"
                    Text="{Binding BudgetGoal_ForCurrentlyShownMonth_String}"/>
             <Label Text="🖍️"/>
@@ -82,11 +83,11 @@
                 Text="Add Expense"
                 FontSize="16"
                 BackgroundColor="LightGreen"
-                Pressed="AddExpenseButton_Top_Pressed"/>
-
+                Clicked="AddExpenseButton_Top_Clicked"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
+                
             <Label HorizontalOptions="CenterAndExpand"/>
 
             <Button x:Name="EditBudgetGoalButton"
@@ -137,12 +138,16 @@
                                     <Label Text="💲"/>
                                     <Label Text="{Binding Amount, StringFormat='{0:N2}'}"/>
                                 </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
 
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!-- Check to make sure that expenseCollection contains Expense objects
+            Try making it an ObservableCollection and see if that makes a difference
+            Could also try BindingContext...though I see Xamarin examples that use
+            ItemsSource?? -->
 
         </StackLayout>
 
