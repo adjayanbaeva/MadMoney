@@ -57,6 +57,7 @@ namespace MadMoney.Model
         }
 
 
+
         public Enum Id { get; set; }
 
         public string Emoji

@@ -86,8 +86,23 @@ namespace MadMoney.Model
         // How to specify which Expense to edit?
         // How to submit those edits?
 
-        public void DeleteExpense(string id) { }
-        // How to specify which Expense to delete?
+
+
+        // No protection for the bad state of multiple expenses erroneously
+        // having the same Id. The first (and hopefully only) match
+        // will be deleted.
+        public bool DeleteExpense(string id)
+        {
+            var foundExpense =
+                expenseCollection.Find(expense => expense.Id == id);
+
+            // For a reference type T, the Remove method on List<T> checks
+            // for reference equality, that is, it checks to see if the
+            // object parameter is literally the same object in memory as
+            // the object in the list.
+            return expenseCollection.Remove(foundExpense);
+        }
+
 
 
         // View should ask ViewModel to ask Model about
