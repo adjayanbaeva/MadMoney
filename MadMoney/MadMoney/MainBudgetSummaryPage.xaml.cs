@@ -13,6 +13,7 @@ namespace MadMoney
     [DesignTimeVisible(false)]
     public partial class MainBudgetSummaryPage : ContentPage
     {
+        // May not need to retain a reference to the ViewModel instance
         private MainBudgetSummaryPageViewModel ViewModel = null;
 
         public MainBudgetSummaryPage()
@@ -21,7 +22,6 @@ namespace MadMoney
                             125.37M,
                             DateTime.Parse("2020-03-13"),
                             ExpenseCategory.Enum.TreatYoSelf);
-
 
             App.GlobalBudget.AddExpense("Trader Joe's",
                             42.50M,
@@ -49,6 +49,7 @@ namespace MadMoney
                             ExpenseCategory.Enum.Healthcare);
 
 
+            // May not need to retain a reference to the ViewModel instance
             BindingContext = ViewModel = new MainBudgetSummaryPageViewModel();
 
 
@@ -61,8 +62,79 @@ namespace MadMoney
             // BudgetGoalText.Text = String.Empty;
         }
 
+
         private void PreviousMonthButton_Pressed(object sender, EventArgs e)
         {
+            ViewModel.LoadPreviousMonth();
+
+            // Clear the BindingContext for the MainPage, then set it back to
+            // the same ViewModel. Goal is to force the UI to re-query all
+            // the properties that it is bound to on the viewmodel.
+            BindingContext = null;
+            BindingContext = ViewModel;
+            // For some reason setting it to null is required, doesn't work
+            // without that. I wonder why!
+            // Perhaps the compiler optimizes away the re-assignment of ViewModel
+            // to BindingContext, as though it could not possibly have an effect?
+            // This viewmodel class type, while instantiable, has no state.
+            // Wait. If the class type truly has no state, it should probably
+            // be static after all. Whoops! I'll attribute that design oversight
+            // to me being new to using properties on classes.
+
+
+            // TODO: OBSERVE AND VERIFY
+            // (Does that work for getting all of the UI elements to refresh?)
+            // Yes, it does.
+            // Probably still the best practice to navigate back to the main
+            // (That is, the MainPage navigating to itself)
+
+            // See also:
+            // Budget.AddExpense() for another place that is currently
+            // making a call to create a new month that doesn't yet exist
+            // In this case, need more elaborate logic
+
+
+
+            // Since migrating the data binding to a proper viewmodel, this
+            // vestigal UI demo no longer functions.
+            //MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal_ForCurrentlyShownMonth_Decimal - 100);
+
+        }
+
+        private void NextMonthButton_Pressed(object sender, EventArgs e)
+        {
+            ViewModel.LoadNextMonth();
+
+            // Clear the BindingContext for the MainPage, then set it back to
+            // the same ViewModel. Goal is to force the UI to re-query all
+            // the properties that it is bound to on the viewmodel.
+            BindingContext = null;
+            BindingContext = ViewModel;
+            // For some reason setting it to null is required, doesn't work
+            // without that. I wonder why!
+            // Perhaps the compiler optimizes away the re-assignment of ViewModel
+            // to BindingContext, as though it could not possibly have an effect?
+            // This viewmodel class type, while instantiable, has no state.
+            // Wait. If the class type truly has no state, it should probably
+            // be static after all. Whoops! I'll attribute that design oversight
+            // to me being new to using properties on classes.
+
+
+            // TODO: OBSERVE AND VERIFY
+            // (Does that work for getting all of the UI elements to refresh?)
+            // Yes, it does.
+            // Probably still the best practice to navigate back to the main
+            // (That is, the MainPage navigating to itself)
+
+            // See also:
+            // Budget.AddExpense() for another place that is currently
+            // making a call to create a new month that doesn't yet exist
+            // In this case, need more elaborate logic
+
+
+            // Since migrating the data binding to a proper viewmodel, this
+            // vestigal UI demo no longer functions.
+            //MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal_ForCurrentlyShownMonth_Decimal + 100);
 
 
             // Demo code for when we were pretending that this was Andrea's
@@ -80,14 +152,6 @@ namespace MadMoney
             // Simlar demo code for Ainur's Save button on the GetGoal page
             //App.GlobalBudget.CreateNewMonth(amt, date);
 
-            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal_ForCurrentlyShownMonth_Decimal - 100);
-            return;
-        }
-
-        private void NextMonthButton_Pressed(object sender, EventArgs e)
-        {
-            MainBudgetSummaryPageViewModel.UpdateGoal( ViewModel.BudgetGoal_ForCurrentlyShownMonth_Decimal + 100);
-            return;
         }
 
         private void AddExpenseButton_Top_Pressed(object sender, EventArgs e)
