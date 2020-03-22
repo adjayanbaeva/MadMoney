@@ -115,25 +115,22 @@
                     Also on ListView: ItemsSource="{Binding expenseCollection}"
                     Currently setting BindingContext instead in MainBudgetSummaryPage constructor -->
             <ListView x:Name="ExpensesListView"
-                      ItemsSource="{Binding Expenses}">
+                      ItemsSource="{Binding Expenses}"
+                      ItemTapped="ExpensesListView_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+
                             <StackLayout>
+                                
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Description}"/>
-                                    <!-- TODO: Fix this empty Label hack for 
-                                    I can't figure out how else to do the left
-                                    and right justify -->
                                     <Label HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="{Binding Category.Emoji}"/>
-                                    <!-- TODO: Update once emoji conversions are in -->
                                 </StackLayout>
+                                
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}"/>
-                                    <!-- TODO: Fix this empty Label hack for 
-                                    I can't figure out how else to do the left
-                                    and right justify -->
                                     <Label HorizontalOptions="CenterAndExpand"/>
                                     <Label Text="💲"/>
                                     <Label Text="{Binding Amount, StringFormat='{0:N2}'}"/>

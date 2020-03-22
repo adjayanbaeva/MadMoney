@@ -153,12 +153,6 @@ namespace MadMoney
             //App.GlobalBudget.CreateNewMonth(amt, date);
 
         }
-
-        private void AddExpenseButton_Top_Pressed(object sender, EventArgs e)
-        {
-
-        }
-
         private void FilterExpensesButton_Pressed(object sender, EventArgs e)
         {
 
@@ -169,15 +163,15 @@ namespace MadMoney
             Navigation.PushAsync(new AddExpense());
         }
 
-        private void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Navigation.PushAsync(new EditExpense());
-        }
-
         // Retained because there is some reference to this in the solution somewhere
         private void AddExpenseButton_Top_Clicked(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new AddExpense());
+        }
 
+        private void ExpensesListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new EditExpense());
         }
     }
 }
