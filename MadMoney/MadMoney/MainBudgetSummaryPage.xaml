@@ -7,6 +7,25 @@
              x:Class="MadMoney.MainBudgetSummaryPage"
              xmlns:data="MadMoney.Model">
 
+    
+    <!-- Defining some styles to make it easier to change font size
+         across multiple UI controls at once. -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Goal, Remaining and Total -->
+            <Style x:Key="MainLabelFontSize" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+            <!-- All of the expense properites in the ListView -->
+            <Style x:Key="ListViewFontSize" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    
+    
     <StackLayout>
 
         <StackLayout x:Name="MonthNavigationBar"
@@ -32,46 +51,57 @@
 
         <StackLayout Orientation="Horizontal">
 
-            <Label Text="Budget Goal:"/>
+            <Label Text="Budget Goal:"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
-            <Label Text="💲"/>
-
+            <Label Text="💲"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <Label x:Name="BudgetGoalText"
-                   Text="{Binding BudgetGoal_ForCurrentlyShownMonth_String}"/>
-            <Label Text="🖍️"/>
+                   Text="{Binding BudgetGoal_ForCurrentlyShownMonth_String}"
+                   Style="{StaticResource MainLabelFontSize}"/>
+            <Label Text="🏁"
+                   Style="{StaticResource MainLabelFontSize}"/>
 
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
 
-            <Label Text="Budget Remaining:"/>
+            <Label Text="Budget Remaining:"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
-            <Label Text="💲"/>
+            <Label Text="💲"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <Label x:Name="BudgetRemainingText"
-                   Text="{Binding BudgetRemaining_ForCurrentlyShownMonth_String}"/>
+                   Text="{Binding BudgetRemaining_ForCurrentlyShownMonth_String}"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <!-- TODO: Update color/icon to reflect whether the user is below,
             at, or beyond their budget goal. -->
-            <Label Text="🆗"/>
+            <Label Text="🆗"
+                   Style="{StaticResource MainLabelFontSize}"/>
 
         </StackLayout>
 
         <StackLayout Orientation="Horizontal">
 
-            <Label Text="Total Expenses:"/>
+            <Label Text="Total Expenses:"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
-            <Label Text="💲"/>
+            <Label Text="💲"
+                   Style="{StaticResource MainLabelFontSize}"/>
             <Label x:Name="TotalExpensesText"
-                   Text="{Binding TotalExpenses_ForCurrentlyShownMonth_String}"/>
-            <Label Text="💸"/>
+                   Text="{Binding TotalExpenses_ForCurrentlyShownMonth_String}"
+                   Style="{StaticResource MainLabelFontSize}"/>
+            <Label Text="💸"
+                   Style="{StaticResource MainLabelFontSize}"/>
 
         </StackLayout>
 
@@ -83,7 +113,7 @@
                 Text="Add Expense"
                 FontSize="16"
                 BackgroundColor="LightGreen"
-                Clicked="AddExpenseButton_Top_Clicked"/>
+                Pressed="AddExpenseButton_Top_Pressed"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
@@ -120,34 +150,35 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-
                             <StackLayout>
-                                
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Description}"
+                                           Style="{StaticResource ListViewFontSize}"/>
+                                    <!-- TODO: Fix this empty Label hack for 
+                                    I can't figure out how else to do the left
+                                    and right justify -->
                                     <Label HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="{Binding Category.Emoji}"/>
+                                    <Label Text="{Binding Category.Emoji}"
+                                           Style="{StaticResource ListViewFontSize}"/>
+                                    <!-- TODO: Update once emoji conversions are in -->
                                 </StackLayout>
-                                
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}"/>
+                                    <Label Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}"
+                                           Style="{StaticResource ListViewFontSize}"/>
+                                    <!-- TODO: Fix this empty Label hack for 
+                                    I can't figure out how else to do the left
+                                    and right justify -->
                                     <Label HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="💲"/>
-                                    <Label Text="{Binding Amount, StringFormat='{0:N2}'}"/>
+                                    <Label Text="💲"
+                                           Style="{StaticResource ListViewFontSize}"/>
+                                    <Label Text="{Binding Amount, StringFormat='{0:N2}'}"
+                                           Style="{StaticResource ListViewFontSize}"/>
                                 </StackLayout>
-
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <!-- Check to make sure that expenseCollection contains Expense objects
-            Try making it an ObservableCollection and see if that makes a difference
-            Could also try BindingContext...though I see Xamarin examples that use
-            ItemsSource?? -->
             </ListView>
-
-
-
         </StackLayout>
 
             
@@ -162,16 +193,5 @@
 
     </StackLayout>
 
-
-    <!--
-
-    <StackLayout>
-
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-    
-    -->
 
 </ContentPage>
