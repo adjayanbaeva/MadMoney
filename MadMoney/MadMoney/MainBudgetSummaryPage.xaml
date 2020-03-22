@@ -37,8 +37,7 @@
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
             <Label Text="💲"/>
-            <Label x:Name="BudgetGoalText"
-                   Text="{Binding BudgetGoal}"/>
+            <Label Text="{Binding BudgetGoal}"/>
             <Label Text="🖍️"/>
 
         </StackLayout>
@@ -75,85 +74,59 @@
                 Text="Add Expense"
                 FontSize="22"
                 BackgroundColor="LightGreen"
-                Pressed="AddExpenseButton_Top_Pressed"/>
-
+                Clicked="AddExpenseButton_Top_Clicked"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
+                
             <Label HorizontalOptions="CenterAndExpand"/>
 
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
                 FontSize="22"
-                BackgroundColor="LightBlue"
-                Pressed="FilterExpensesButton_Pressed"/>
+                BackgroundColor="LightBlue"/>
         </StackLayout>
 
 
-        <StackLayout>
-
-            <!-- FOR ANDREA: EXAMPLE CATEGORY DATA BINDING -->
-            <ListView x:Name="DemoExpenseCategoryListView"
-                      ItemsSource="{Binding ExpenseCategories}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Emoji}"/>
-                                    <Label Text="{Binding Name}"/>
-                                </StackLayout>
+        <!-- TODO: Why is this not working? on DataTemplate: x:DataType="data:Expense"
+                Also on ListView: ItemsSource="{Binding expenseCollection}"
+                Currently setting BindingContext instead in MainBudgetSummaryPage constructor -->
+        <ListView x:Name="ExpensesListView"
+                  ItemSelected="ExpensesListView_ItemSelected"
+                  ItemsSource="{Binding Expenses}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Description}"/>
+                                <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+                                <Label HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="🍎"/> <!-- TODO: Update once emoji conversions are in -->
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-
-            <!-- TODO: Why is this not working? on DataTemplate: x:DataType="data:Expense"
-                    Also on ListView: ItemsSource="{Binding expenseCollection}"
-                    Currently setting BindingContext instead in MainBudgetSummaryPage constructor -->
-            <ListView x:Name="ExpensesListView"
-                      ItemsSource="{Binding Expenses}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Description}"/>
-                                    <!-- TODO: Fix this empty Label hack for 
-                                    I can't figure out how else to do the left
-                                    and right justify -->
-                                    <Label HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="🍎"/>
-                                    <!-- TODO: Update once emoji conversions are in -->
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Date}"/>
-                                    <!-- TODO: Fix this empty Label hack for 
-                                    I can't figure out how else to do the left
-                                    and right justify -->
-                                    <Label HorizontalOptions="CenterAndExpand"/>
-                                    <Label Text="💲"/>
-                                    <Label Text="{Binding Amount}"/>
-                                </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Date}"/>
+                                <!-- TODO: Fix this empty Label hack for 
+                                I can't figure out how else to do the left
+                                and right justify -->
+                                <Label HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="💲"/>
+                                <Label Text="{Binding Amount}"/>
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!-- Check to make sure that expenseCollection contains Expense objects
+            Try making it an ObservableCollection and see if that makes a difference
+            Could also try BindingContext...though I see Xamarin examples that use
+            ItemsSource?? -->
+
+        </ListView>
 
 
-
-
-            
-        </StackLayout>
-
-            
-            
-            
-            <!-- TODO: Remove this? Depends on whether the Add Expense button
-        at the top of the page is visible or not -->
         <Button x:Name="AddExpenseButton_Bottom"
                 Text="Add Expense"
                 FontSize="22"
