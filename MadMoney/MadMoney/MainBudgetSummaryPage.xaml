@@ -74,7 +74,7 @@
                 Text="Add Expense"
                 FontSize="22"
                 BackgroundColor="LightGreen"
-                Clicked="AddExpenseButton_Clicked"/>
+                Clicked="AddExpenseButton_Top_Clicked"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->

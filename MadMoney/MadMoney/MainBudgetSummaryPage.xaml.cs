@@ -70,14 +70,20 @@ namespace MadMoney
             return;
         }
 
-        private void AddExpenseButton_Top_Pressed(object sender, EventArgs e)
-        {
-
-        }
 
         private void FilterExpensesButton_Pressed(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddExpenseButton_Top_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddExpense());
+        }
+
+        private void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new EditExpense());
         }
     }
 }

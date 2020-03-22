@@ -44,7 +44,8 @@
                 HorizontalOptions="Start"
                 FontSize="20"
                 TextColor="Purple"/>
-            <DatePicker VerticalOptions="CenterAndExpand"
+            <DatePicker x:Name="EditExpDate"
+                VerticalOptions="CenterAndExpand"
                 Format="MM-dd-yyyy"/>
 
             <!--Select category section-->
@@ -53,16 +54,12 @@
                HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
-            <Picker Title="Select a Category">
-                <Picker.Items>
-                    <x:String>Groceries</x:String>
-                    <x:String>Restaurants</x:String>
-                    <x:String>Rent</x:String>
-                    <x:String>Healthcare</x:String>
-                    <x:String>Gifts</x:String>
-                    <x:String>TreatYoSelf</x:String>
-                </Picker.Items>
-            </Picker>
+            <Picker Title="Select a Category"
+                x:Name="SelectCategory"
+                ItemsSource="{Binding ExpenseCategories}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="SelectCategory">
+                </Picker>
 
             <!--Buttons Section-->
             <Grid>
@@ -89,7 +86,7 @@
                         Grid.ColumnSpan="2"
                         Grid.Column="0"
                         Text="Delete"
-                        Clicked="Button_Clicked"/>
+                        Clicked="OnDeleteButton_Clicked"/>
             </Grid>
         </StackLayout>
 

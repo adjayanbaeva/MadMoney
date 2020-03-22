@@ -21,7 +21,6 @@
                FontSize="23"
                TextColor="Purple"/>
         <Editor x:Name="ExpenseDescription"
-                Text="{Binding Description}"
                 Placeholder="Enter a description here"
                 HeightRequest="70"/>
 
@@ -32,7 +31,6 @@
                FontSize="23"
                TextColor="Purple"/>
         <Editor x:Name="ExpenseAmount"
-                Text="{Binding Amount}"
                 Placeholder="Enter the amount here"
                 Keyboard="Numeric"
                 MaxLength="7"
@@ -44,7 +42,8 @@
                 HorizontalOptions="Start"
                 FontSize="23"
                 TextColor="Purple"/>
-        <DatePicker VerticalOptions="CenterAndExpand"
+        <DatePicker x:Name="AddExpDate"
+                VerticalOptions="CenterAndExpand"
                 Format="MM-dd-yyyy"
                 />
 
@@ -55,10 +54,13 @@
                FontSize="23"
                TextColor="Purple"/>
         <Picker Title="Select a Category"
-                ItemsSource="{Binding ExCategory}"
-                ItemDisplayBinding="{Binding Category}">
+                x:Name="SelectCategory"
+                ItemsSource="{Binding ExpenseCategories}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="SelectCategory">
+            
             <!--ItemsSource ="{Binding Expense}"-->
-                <!--ItemDisplayBinding="{Binding Category, Mode=TwoWay}"-->
+            <!--ItemDisplayBinding="{Binding Category, Mode=TwoWay}"-->
             <!--<Picker.Items>
                 <x:string>Groceries</x:ExpenseCategory>
                 <x:ExpenseCategory>Restaurants</x:ExpenseCategory>

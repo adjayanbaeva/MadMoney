@@ -27,7 +27,7 @@ namespace MadMoney
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void OnDeleteButton_Clicked(object sender, EventArgs e)
         {
 
         }
