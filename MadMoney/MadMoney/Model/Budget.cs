@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using MadMoney.Utility;
 
@@ -118,6 +119,69 @@ namespace MadMoney.Model
             budgetMonthOfExpense.AddExpense(new Expense(expDescrip, expAmt, expDate, expCat));
 
         }
+
+        // Returns null if no expense could be found with the specified Id
+        public Expense GetCopyOfExpenseById(string id)
+        {
+            var foundExpense = FindExpenseById(id);
+
+            // If we found a match
+            if (null != foundExpense)
+            {
+                // Return a copy of it
+                // Note that this copies the Id
+                // (a new Id is NOT generated)
+                return new Expense(foundExpense.Id,
+                                   foundExpense.Description,
+                                   foundExpense.Amount,
+                                   foundExpense.Date,
+                                   foundExpense.Category);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private Expense FindExpenseById(string Id)
+        {
+            Expense foundExpense = null;
+
+            foreach (var month in budgetMonths)
+            {
+                foundExpense = month.Expenses.ToList().Find(expense => expense.Id == Id);
+                if (null != foundExpense)
+                {
+                    // If we find an expense that matches the parameter Id
+                    // stop looking through the budget months
+                    break;
+                }
+            }
+
+            return (null != foundExpense) ? foundExpense : null;
+        }
+
+
+
+        // Returns true if expense was found and deleted
+        // Returns false if expense was not found (no expense was deleted)
+        public bool DeleteExpenseById(string id)
+        {
+            bool deletedExpense = false;
+
+            foreach (var month in budgetMonths)
+            {
+                deletedExpense = month.DeleteExpense(id);
+
+                if (true == deletedExpense)
+                {
+                    break;
+                }
+            }
+
+            return deletedExpense ? true : false;
+        }
+
 
         // The design doesn't provide for deleting a budget month
         // public void DeleteBudget(DateTime month) { }

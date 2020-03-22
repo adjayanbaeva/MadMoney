@@ -174,9 +174,18 @@ namespace MadMoney
             Navigation.PushAsync(new AddExpense());
         }
 
+
+
+        private void ExpensesListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var tappedExpense = (Expense)e.Item;
+
+            Navigation.PushAsync(new EditExpense(tappedExpense.Id));
+        }
+
         private void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new EditExpense());
+
         }
 
         // Retained because there is some reference to this in the solution somewhere
@@ -184,5 +193,7 @@ namespace MadMoney
         {
 
         }
+
+
     }
 }
