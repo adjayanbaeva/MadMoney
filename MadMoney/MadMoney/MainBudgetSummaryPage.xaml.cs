@@ -173,5 +173,11 @@ namespace MadMoney
         {
             Navigation.PushAsync(new EditExpense());
         }
+
+        // Retained because there is some reference to this in the solution somewhere
+        private void AddExpenseButton_Top_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

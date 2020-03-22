@@ -140,14 +140,16 @@
                                 </StackLayout>
 
                             </StackLayout>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <!-- Check to make sure that expenseCollection contains Expense objects
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <!-- Check to make sure that expenseCollection contains Expense objects
             Try making it an ObservableCollection and see if that makes a difference
             Could also try BindingContext...though I see Xamarin examples that use
             ItemsSource?? -->
+            </ListView>
+
+
 
         </StackLayout>
 
