@@ -113,11 +113,11 @@
                 Text="Add Expense"
                 FontSize="16"
                 BackgroundColor="LightGreen"
-                Pressed="AddExpenseButton_Top_Pressed"/>
-
+                Clicked="AddExpenseButton_Top_Clicked"/>
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
                                 and right justify -->
+                
             <Label HorizontalOptions="CenterAndExpand"/>
 
             <Button x:Name="EditBudgetGoalButton"
@@ -178,8 +178,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-
         </StackLayout>
 
             

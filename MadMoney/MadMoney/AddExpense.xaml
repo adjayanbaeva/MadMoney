@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MadMoney.AddExpense">
+    
+    <!--Header of the page-->
+    <StackLayout Spacing="8">
+        <Label Text="Add Expense"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+               FontSize="40"
+               FontAttributes="Bold"/>
+
+        <!--Add description of expense section-->
+        <Label x:Name="Descrip"
+                Text="Description" 
+               HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <Editor x:Name="ExpenseDescription"
+                Placeholder="Enter a description here"
+                HeightRequest="70"/>
+
+        <!--Add amount of expense section-->
+        <Label x:Name="Amt"
+                Text="Amount" 
+                HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <Editor x:Name="ExpenseAmount"
+                Placeholder="Enter the amount here"
+                Keyboard="Numeric"
+                MaxLength="7"
+                HeightRequest="70"/>
+
+        <!--Add Date of expense section-->
+        <Label  x:Name="Date"
+                Text="Date" 
+                HorizontalOptions="Start"
+                FontSize="23"
+                TextColor="Purple"/>
+        <DatePicker x:Name="AddExpDate"
+                VerticalOptions="CenterAndExpand"
+                Format="MM-dd-yyyy"
+                />
+
+        <!--Select category section-->
+        <Label x:Name="Cat"
+                Text="Category" 
+               HorizontalOptions="Start"
+               FontSize="23"
+               TextColor="Purple"/>
+        <Picker Title="Select a Category"
+                x:Name="SelectCategory"
+                ItemsSource="{Binding ExpenseCategories}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="SelectCategory">
+            
+            <!--ItemsSource ="{Binding Expense}"-->
+            <!--ItemDisplayBinding="{Binding Category, Mode=TwoWay}"-->
+            <!--<Picker.Items>
+                <x:string>Groceries</x:ExpenseCategory>
+                <x:ExpenseCategory>Restaurants</x:ExpenseCategory>
+                <x:ExpenseCategory>Rent</x:ExpenseCategory>
+                <x:ExpenseCategory>Healthcare</x:ExpenseCategory>
+                <x:ExpenseCategory>Gifts</x:ExpenseCategory>
+                <x:ExpenseCategory>TreatYoSelf</x:ExpenseCategory>
+            </Picker.Items>-->
+        </Picker>
+
+        <!--Buttons Section-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Cancel"
+                    Clicked="OnCancelButton_Clicked"/>
+            <Button Grid.Column="1"
+                    Text="Save"
+                    Clicked="OnSaveButton_Clicked"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
