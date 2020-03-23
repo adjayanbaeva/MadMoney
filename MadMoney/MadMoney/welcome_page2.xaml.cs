@@ -12,6 +12,8 @@ using Xamarin.Forms.Xaml;
 
 namespace MadMoney
 {
+    // Initial Set Goal Page
+    // No cancel button, the user must enter a goal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class welcome_page2 : ContentPage
     {

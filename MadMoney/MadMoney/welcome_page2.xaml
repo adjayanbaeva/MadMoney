@@ -7,23 +7,27 @@
              x:Class="MadMoney.welcome_page2">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
-            <Label Margin="0,50,0,0" Text="Enter your monthly budget goal for "
+            <Label Margin="0,50,0,0"
+                   Text="Enter your monthly budget goal for "
+                   FontSize="24"
                    
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
             <Label Text="{Binding DisplayedMonth}"
                    VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   FontSize="24"/>
 
             <Entry  x:Name="currentGoal"
                     Placeholder="Enter amout here"
                     Keyboard="Numeric"
-                    
+                    FontSize="24"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"/>
             <Label x:Name="ErrorLabel"
                    TextColor="Red"
-                   HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center"
+                   FontSize="18"/>
 
 
 
@@ -32,7 +36,7 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Center"
                 BackgroundColor="LightGreen"
-                FontSize="14"/>
+                FontSize="20"/>
 
 
         </StackLayout>

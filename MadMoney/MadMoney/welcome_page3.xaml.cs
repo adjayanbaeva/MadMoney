@@ -11,6 +11,8 @@ using Xamarin.Forms.Xaml;
 
 namespace MadMoney
 {
+    // Return Set Goal Page
+    // User may cancel entering a new goal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class welcome_page3 : ContentPage
     {

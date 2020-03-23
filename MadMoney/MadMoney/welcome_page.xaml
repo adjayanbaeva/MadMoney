@@ -12,10 +12,13 @@
             <Label Text="Welcome to Mad Money, your friendly budgeting app! First, we'll ask for your monthly budget amount. Then you'll enter your expenses. Finally, you'll see a summary of your
   expenses and how you're doing for the month." 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand"
+           FontSize="36"
+           HorizontalTextAlignment="Center"/>
             <Button Text="Continue..."
                    Clicked="Button_Clicked"
-                    BackgroundColor="LightBlue"/>
+                    BackgroundColor="LightBlue"
+                    FontSize="18"/>
         </StackLayout>
 
     </ContentPage.Content>

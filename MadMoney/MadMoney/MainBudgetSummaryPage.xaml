@@ -18,7 +18,7 @@
             </Style>
             <!-- All of the expense properites in the ListView -->
             <Style x:Key="ListViewFontSize" TargetType="Label">
-                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontSize" Value="24" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -62,8 +62,12 @@
             <Label x:Name="BudgetGoalText"
                    Text="{Binding BudgetGoal_ForCurrentlyShownMonth_String}"
                    Style="{StaticResource MainLabelFontSize}"/>
-            <Label Text="🏁"
-                   Style="{StaticResource MainLabelFontSize}"/>
+
+
+            <!--             <Label Text="🏁"
+                   Style="{StaticResource MainLabelFontSize}"/> -->
+            
+
 
         </StackLayout>
 
@@ -75,6 +79,9 @@
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
+            
+            
+            
             <Label Text="💲"
                    Style="{StaticResource MainLabelFontSize}"/>
             <Label x:Name="BudgetRemainingText"
@@ -82,8 +89,11 @@
                    Style="{StaticResource MainLabelFontSize}"/>
             <!-- TODO: Update color/icon to reflect whether the user is below,
             at, or beyond their budget goal. -->
-            <Label Text="🆗"
-                   Style="{StaticResource MainLabelFontSize}"/>
+
+            <!--             <Label Text="🆗"
+                   Style="{StaticResource MainLabelFontSize}"/> -->
+            
+
 
         </StackLayout>
 
@@ -100,8 +110,12 @@
             <Label x:Name="TotalExpensesText"
                    Text="{Binding TotalExpenses_ForCurrentlyShownMonth_String}"
                    Style="{StaticResource MainLabelFontSize}"/>
-            <Label Text="💸"
-                   Style="{StaticResource MainLabelFontSize}"/>
+
+
+            <!--             <Label Text="💸"
+                   Style="{StaticResource MainLabelFontSize}"/> -->
+            
+
 
         </StackLayout>
 
@@ -126,17 +140,18 @@
                 BackgroundColor="LightSalmon"
                 Pressed="EditBudgetGoalButton_Pressed"/>
 
+
+
             <!-- TODO: Fix this empty Label hack for 
                                 I can't figure out how else to do the left
-                                and right justify -->
+                                and right justify
             <Label HorizontalOptions="CenterAndExpand"/>
-            
-            
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
                 FontSize="16"
                 BackgroundColor="LightBlue"
-                Pressed="FilterExpensesButton_Pressed"/>
+                Pressed="FilterExpensesButton_Pressed"/> -->
+
         </StackLayout>
 
 
@@ -147,7 +162,8 @@
                     Currently setting BindingContext instead in MainBudgetSummaryPage constructor -->
             <ListView x:Name="ExpensesListView"
                       ItemsSource="{Binding Expenses}"
-                      ItemTapped="ExpensesListView_ItemTapped">
+                      ItemTapped="ExpensesListView_ItemTapped"
+                      RowHeight="80">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -186,11 +202,11 @@
             
             
         <!-- TODO: Remove this? Depends on whether the Add Expense button
-        at the top of the page is visible or not -->
+        at the top of the page is visible or not 
         <Button x:Name="AddExpenseButton_Bottom"
                 Text="Add Expense"
                 FontSize="16"
-                BackgroundColor="LightGreen"/>
+                BackgroundColor="LightGreen"/> -->
 
     </StackLayout>
 
