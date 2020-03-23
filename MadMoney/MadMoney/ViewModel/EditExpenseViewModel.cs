@@ -9,8 +9,8 @@ namespace MadMoney.ViewModel
 {
     class EditExpenseViewModel
     {
-        private Expense selectedExpense;
-        private string editId;
+        private static Expense selectedExpense;
+        private static string editId;
         public EditExpenseViewModel(string expenseId)
         {
             editId = expenseId;
@@ -28,7 +28,6 @@ namespace MadMoney.ViewModel
         public ExpenseCategory ExpCateg { get { return selectedExpense.Category; } }
 
 
-
         //Collection needed for Categories picker
         public ReadOnlyCollection<ExpenseCategory> ExpenseCategories
         {
@@ -40,5 +39,27 @@ namespace MadMoney.ViewModel
 
         //var editexpense = App.GlobalBudget.GetCopyOfExpenseById(idOfExpenseToEdit);
 
+        public static void UpdateChanges(string editdescrip, decimal editamt, DateTime editdate, ExpenseCategory editcat)
+        {
+            if (editdescrip != selectedExpense.Description)
+            {
+                App.GlobalBudget.SetDescriptionForExpenseById(editId, editdescrip);
+            }
+
+            if (editamt != selectedExpense.Amount)
+            {
+                App.GlobalBudget.SetAmountForExpenseById(editId, editamt);
+            }
+
+            if (editdate != selectedExpense.Date)
+            {
+                App.GlobalBudget.SetDateForExpenseById(editId, editdate);
+            }
+
+            if (editcat != selectedExpense.Category)
+            {
+                App.GlobalBudget.SetCategoryForExpenseById(editId, editcat);
+            }
+        }
     }
 }

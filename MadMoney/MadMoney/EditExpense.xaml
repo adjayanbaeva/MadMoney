@@ -23,7 +23,7 @@
                HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
-            <Editor x:Name="ExpenseDescription"
+            <Entry x:Name="ExpenseDescription"
                     Text="{Binding ExpDescrip}"
                 HeightRequest="50"/>
 
@@ -33,7 +33,7 @@
                 HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
-            <Editor x:Name="ExpenseAmount"
+            <Entry x:Name="ExpenseAmount"
                 Text="{Binding ExpAmt}"
                 Keyboard="Numeric"
                 MaxLength="7"

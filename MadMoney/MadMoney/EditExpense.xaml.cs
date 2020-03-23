@@ -27,16 +27,16 @@ namespace MadMoney
             BindingContext = new EditExpenseViewModel(expenseId);
             // Overwriting the properties of the specified expense to prove
             // that it works.
-            App.GlobalBudget.SetDescriptionForExpenseById(idOfExpenseToEdit, "Whole Foods");
-
-            App.GlobalBudget.SetAmountForExpenseById(idOfExpenseToEdit, 250.00M);
-
-            App.GlobalBudget.SetDateForExpenseById(idOfExpenseToEdit, DateTime.Today);
-
-            App.GlobalBudget.SetCategoryForExpenseById(idOfExpenseToEdit, ExpenseCategory.Enum.Groceries);
-
 
             InitializeComponent();
+        }
+
+        public decimal expAmount
+        {
+            get
+            {
+                return Convert.ToDecimal(ExpenseAmount.Text);
+            }
         }
 
         private void OnCancelButton_Clicked(object sender, EventArgs e)
@@ -44,9 +44,13 @@ namespace MadMoney
             Navigation.PopAsync();
         }
 
+
         private void OnSaveButton_Clicked(object sender, EventArgs e)
         {
 
+            //Write method to EditExpenseVM with expense description parameter so that the VM has the information needed to compare to
+            EditExpenseViewModel.UpdateChanges(ExpenseDescription.Text, expAmount, EditExpDate.Date, (ExpenseCategory)SelectCategory.SelectedItem);
+            Navigation.PopAsync();
         }
 
         private void OnDeleteButton_Clicked(object sender, EventArgs e)
