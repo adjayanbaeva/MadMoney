@@ -14,7 +14,8 @@
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
             <Button Text="Continue..."
-                   Clicked="Button_Clicked"/>
+                   Clicked="Button_Clicked"
+                    BackgroundColor="LightBlue"/>
         </StackLayout>
 
     </ContentPage.Content>

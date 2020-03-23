@@ -8,27 +8,32 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
             <Label Margin="0,50,0,0" Text="Enter your monthly budget goal for "
+                   
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"/>
-            
-            <Entry 
-                x:Name="currentGoal"
-                Placeholder="Enter amout here"
-                Keyboard="Numeric"
-                HeightRequest="50"
+            <Label Text="{Binding DisplayedMonth}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+
+            <Entry  x:Name="currentGoal"
+                    Placeholder="Enter amout here"
+                    Keyboard="Numeric"
+                    
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            <Label x:Name="ErrorLabel"
+                   TextColor="Red"
+                   HorizontalTextAlignment="Center"/>
+
+
+
+            <Button Text="Save"
+                Clicked="OnSaveButtonClicked"
+                HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Center"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-               />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200" />
-                    <ColumnDefinition Width="200" />
-                </Grid.ColumnDefinitions>
-                <Button Text="Save"
-                        Clicked="OnSaveButtonClicked"
-                        HorizontalOptions="Center"/>
-            </Grid>
+                BackgroundColor="LightGreen"
+                FontSize="14"/>
+
 
         </StackLayout>
     </ContentPage.Content>

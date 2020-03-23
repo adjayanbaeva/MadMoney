@@ -79,5 +79,10 @@ namespace MadMoney
         {
 
         }
+
+        private void editGoal_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new welcome_page3());
+        }
     }
 }

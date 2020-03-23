@@ -81,6 +81,18 @@
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
+            
+            
+            
+            <Button x:Name="editGoal"
+                Text="Edit Goal"
+                FontSize="22"
+                BackgroundColor="LightBlue"
+                Clicked="editGoal_Clicked"/>
+
+
+
+
 
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
