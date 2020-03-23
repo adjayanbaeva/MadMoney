@@ -23,6 +23,7 @@ namespace MadMoney
 
         }
 
+
         public decimal expAmount
         {
             get
@@ -42,6 +43,11 @@ namespace MadMoney
         private void OnCancelButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync();
+        }
+
+        private void ExpenseAmount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

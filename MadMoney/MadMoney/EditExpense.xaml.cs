@@ -1,4 +1,5 @@
 ﻿using MadMoney.Model;
+using MadMoney.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,7 @@ namespace MadMoney
             // View should pass the id to a method on the viewmodel,
             // then the viewmodel should look up the expense and implement
             // the properties that the view will bind to
-            var copyOfExpenseToEdit =
-                App.GlobalBudget.GetCopyOfExpenseById(idOfExpenseToEdit);
-
-
-
-
+            BindingContext = new EditExpenseViewModel(expenseId);
             // Overwriting the properties of the specified expense to prove
             // that it works.
             App.GlobalBudget.SetDescriptionForExpenseById(idOfExpenseToEdit, "Whole Foods");
@@ -40,11 +36,8 @@ namespace MadMoney
             App.GlobalBudget.SetCategoryForExpenseById(idOfExpenseToEdit, ExpenseCategory.Enum.Groceries);
 
 
-
             InitializeComponent();
         }
-
-
 
         private void OnCancelButton_Clicked(object sender, EventArgs e)
         {
@@ -53,8 +46,6 @@ namespace MadMoney
 
         private void OnSaveButton_Clicked(object sender, EventArgs e)
         {
-
-
 
         }
 
