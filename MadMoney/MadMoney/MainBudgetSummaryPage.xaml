@@ -130,7 +130,8 @@
                                 I can't figure out how else to do the left
                                 and right justify -->
             <Label HorizontalOptions="CenterAndExpand"/>
-
+            
+            
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
                 FontSize="16"

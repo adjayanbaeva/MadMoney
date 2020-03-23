@@ -161,7 +161,7 @@ namespace MadMoney
 
         private void AddExpenseButton_Top_Pressed(object sender, EventArgs e)
         {
-            //Not Needed
+            Navigation.PushAsync(new AddExpense());
         }
 
         private void FilterExpensesButton_Pressed(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace MadMoney
 
         private void EditBudgetGoalButton_Pressed(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddExpense());
+            Navigation.PushAsync(new welcome_page3());
         }
 
 
@@ -192,6 +192,9 @@ namespace MadMoney
             //Not needed
         }
 
-
+        private void editGoal_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new welcome_page3());
+        }
     }
 }

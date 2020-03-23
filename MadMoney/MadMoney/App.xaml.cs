@@ -25,7 +25,7 @@ namespace MadMoney
             App.GlobalBudget.CreateNewMonth(2000M,
                                 DateTime.Parse("2020-03-01"));
 
-            MainPage = new NavigationPage(new MainBudgetSummaryPage());
+            MainPage = new NavigationPage(new welcome_page());
         }
 
         protected override void OnStart()

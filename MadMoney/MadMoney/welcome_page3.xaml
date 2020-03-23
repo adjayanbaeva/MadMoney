@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MadMoney.welcome_page3">
+
+    <ContentPage.Content>
+        
+        <StackLayout VerticalOptions="Start">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label Text="{Binding BudgetGoal , StringFormat='Current Budget Goal: 💲  {0:N}'}"
+                       FontSize="18"/>
+            </StackLayout>
+
+            <StackLayout Margin="50,150,50,50">
+                <Label Text="Enter new monthly budget goal for "
+                       FontSize="18"/>
+                <Label Text="{Binding DisplayedMonth}"
+                       HorizontalOptions="CenterAndExpand"
+                       FontSize="18"/>
+
+                <Entry x:Name="currentGoal"
+                     Placeholder="Enter new amount here"
+                    Keyboard="Numeric"
+                    HeightRequest="50"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    />
+                <Label x:Name="ErrorLabel"
+                        TextColor="Red"
+                       HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Save"
+                Clicked="OnSaveChanges_Clicked"
+                BackgroundColor="LightGreen"
+                FontSize="14"/>
+
+            <Button Grid.Column="1"
+                Text="Cancel"
+                Clicked="OnCancelButton_Clicked"
+                BackgroundColor="LightBlue"
+                FontSize="14"/>
+        </Grid>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+
+
+</ContentPage>
+
+        
