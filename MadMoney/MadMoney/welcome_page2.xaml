@@ -19,7 +19,7 @@
                    FontSize="24"/>
 
             <Entry  x:Name="currentGoal"
-                    Placeholder="Enter amout here"
+                    Placeholder="Enter amount here"
                     Keyboard="Numeric"
                     FontSize="24"
                     VerticalOptions="Center"
