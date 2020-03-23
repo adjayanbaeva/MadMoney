@@ -11,26 +11,30 @@
         <StackLayout VerticalOptions="Start">
             <StackLayout VerticalOptions="CenterAndExpand">
                 <Label Text="{Binding BudgetGoal , StringFormat='Current Budget Goal: 💲  {0:N}'}"
-                       FontSize="18"/>
+                       FontSize="24"/>
             </StackLayout>
 
             <StackLayout Margin="50,150,50,50">
-                <Label Text="Enter new monthly budget goal for "
-                       FontSize="18"/>
+                <Label Text="Enter your new monthly budget goal for "
+                       FontSize="24"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="CenterAndExpand"/>
                 <Label Text="{Binding DisplayedMonth}"
                        HorizontalOptions="CenterAndExpand"
-                       FontSize="18"/>
+                       FontSize="24"/>
 
                 <Entry x:Name="currentGoal"
                      Placeholder="Enter new amount here"
                     Keyboard="Numeric"
                     HeightRequest="50"
+                    FontSize="24"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     />
                 <Label x:Name="ErrorLabel"
                         TextColor="Red"
-                       HorizontalTextAlignment="Center"/>
+                       HorizontalTextAlignment="Center"
+                       FontSize="18"/>
             </StackLayout>
 
             <Grid>
