@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="EditExpenseUI"
              mc:Ignorable="d"
              x:Class="MadMoney.EditExpense">
-    
+
     <ContentPage.Content>
 
         <!--Header of the page-->
@@ -23,7 +24,7 @@
                FontSize="23"
                TextColor="Purple"/>
             <Editor x:Name="ExpenseDescription"
-                Placeholder="Enter a description here"
+                    Text="{Binding ExpDescrip}"
                 HeightRequest="50"/>
 
             <!--Add amount of expense section-->
@@ -33,7 +34,7 @@
                FontSize="23"
                TextColor="Purple"/>
             <Editor x:Name="ExpenseAmount"
-                Placeholder="Enter the amount here"
+                Text="{Binding ExpAmt}"
                 Keyboard="Numeric"
                 MaxLength="7"
                 HeightRequest="50"/>
@@ -45,7 +46,7 @@
                 FontSize="20"
                 TextColor="Purple"/>
             <DatePicker x:Name="EditExpDate"
-                VerticalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"       
                 Format="MM-dd-yyyy"/>
 
             <!--Select category section-->
@@ -58,7 +59,7 @@
                 x:Name="SelectCategory"
                 ItemsSource="{Binding ExpenseCategories}"
                 ItemDisplayBinding="{Binding Name}"
-                SelectedItem="SelectCategory">
+                SelectedItem="{Binding ExpCateg}">
                 </Picker>
 
             <!--Buttons Section-->

@@ -161,7 +161,7 @@ namespace MadMoney
 
         private void AddExpenseButton_Top_Pressed(object sender, EventArgs e)
         {
-
+            //Not Needed
         }
 
         private void FilterExpensesButton_Pressed(object sender, EventArgs e)
@@ -185,13 +185,11 @@ namespace MadMoney
 
         private void ExpensesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
+            //Not needed
         }
-
-        // Retained because there is some reference to this in the solution somewhere
         private void AddExpenseButton_Top_Clicked(object sender, EventArgs e)
         {
-
+            //Not needed
         }
 
 

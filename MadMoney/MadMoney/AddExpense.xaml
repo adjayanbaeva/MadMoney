@@ -20,7 +20,7 @@
                HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
-        <Editor x:Name="ExpenseDescription"
+        <Entry x:Name="ExpenseDescription"
                 Placeholder="Enter a description here"
                 HeightRequest="70"/>
 
@@ -30,10 +30,11 @@
                 HorizontalOptions="Start"
                FontSize="23"
                TextColor="Purple"/>
-        <Editor x:Name="ExpenseAmount"
+        <Entry x:Name="ExpenseAmount"
                 Placeholder="Enter the amount here"
                 Keyboard="Numeric"
-                MaxLength="7"
+                TextChanged="ExpenseAmount_TextChanged" 
+               MaxLength="7"
                 HeightRequest="70"/>
 
         <!--Add Date of expense section-->
@@ -58,17 +59,6 @@
                 ItemsSource="{Binding ExpenseCategories}"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedItem="SelectCategory">
-            
-            <!--ItemsSource ="{Binding Expense}"-->
-            <!--ItemDisplayBinding="{Binding Category, Mode=TwoWay}"-->
-            <!--<Picker.Items>
-                <x:string>Groceries</x:ExpenseCategory>
-                <x:ExpenseCategory>Restaurants</x:ExpenseCategory>
-                <x:ExpenseCategory>Rent</x:ExpenseCategory>
-                <x:ExpenseCategory>Healthcare</x:ExpenseCategory>
-                <x:ExpenseCategory>Gifts</x:ExpenseCategory>
-                <x:ExpenseCategory>TreatYoSelf</x:ExpenseCategory>
-            </Picker.Items>-->
         </Picker>
 
         <!--Buttons Section-->
