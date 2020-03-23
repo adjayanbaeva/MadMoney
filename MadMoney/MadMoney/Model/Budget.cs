@@ -18,12 +18,6 @@ namespace MadMoney.Model
             budgetMonths = new List<BudgetMonth>();
         }
 
-        // TODO:
-        // Make the BudgetMonth an internal class type,
-        // an implementation detail of the Model
-        public IEnumerable<BudgetMonth> BudgetMonths
-        { get { return budgetMonths; } }
-        // may need to provide additional ways to access/modify BudgetMonths collection
 
         public void CreateNewMonth(decimal goal, DateTime monthYear)
         {
@@ -44,19 +38,15 @@ namespace MadMoney.Model
 
 
             budgetMonths.Add(new BudgetMonth(goal, monthYear));
-            // Ideally Budget would not expose the BudgetMonth type at all
-            // BudgetMonth is a class type that is internal to the implementation
-            // of the model, but for now it is exposed
+
         }
 
-
-        // Ideally deprecate this method in the interest of making BudgetMonth
-        // a class that is internal to the Model implementation
-        public BudgetMonth GetBudgetMonthByMonthYear(DateTime monthYear)
+        private BudgetMonth GetBudgetMonthByMonthYear(DateTime monthYear)
         {
             return budgetMonths.Find(month =>
                     DateTimeUtility.IsSameMonthYear(month.MonthYear, monthYear));
         }
+
 
         public IEnumerable<Expense> GetExpensesByMonthYear(DateTime monthYear)
         {
@@ -180,6 +170,59 @@ namespace MadMoney.Model
             }
 
             return deletedExpense ? true : false;
+        }
+
+        public bool SetDescriptionForExpenseById(string id, string expDescrip)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Description = expDescrip;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetAmountForExpenseById(string id, decimal expAmt)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Amount = expAmt;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetDateForExpenseById(string id, DateTime expDate)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Date = expDate;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetCategoryForExpenseById(string id, ExpenseCategory expCat)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Category = expCat;
+                return true;
+            }
+
+            return false;
+
         }
 
 

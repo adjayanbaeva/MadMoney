@@ -25,6 +25,17 @@ namespace MadMoney
             // then the viewmodel should look up the expense and implement
             // the properties that the view will bind to
             BindingContext = new EditExpenseViewModel(expenseId);
+            // Overwriting the properties of the specified expense to prove
+            // that it works.
+            App.GlobalBudget.SetDescriptionForExpenseById(idOfExpenseToEdit, "Whole Foods");
+
+            App.GlobalBudget.SetAmountForExpenseById(idOfExpenseToEdit, 250.00M);
+
+            App.GlobalBudget.SetDateForExpenseById(idOfExpenseToEdit, DateTime.Today);
+
+            App.GlobalBudget.SetCategoryForExpenseById(idOfExpenseToEdit, ExpenseCategory.Enum.Groceries);
+
+
             InitializeComponent();
         }
 

@@ -91,8 +91,8 @@ namespace MadMoney.ViewModel
         {
             get
             {
-                return App.GlobalBudget.GetBudgetMonthByMonthYear(
-                            App.GlobalViewData.CurrentlyDisplayedMonthYear).Expenses;
+                return App.GlobalBudget.GetExpensesByMonthYear(
+                            App.GlobalViewData.CurrentlyDisplayedMonthYear);
             }
         }
 
