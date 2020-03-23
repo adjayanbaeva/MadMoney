@@ -47,8 +47,7 @@ namespace MadMoney
 
         private void ExpenseAmount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.NewTextValue)) return;
-            if (!double)
+
         }
     }
 }
