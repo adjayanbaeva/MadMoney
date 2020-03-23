@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -25,7 +26,7 @@ namespace MadMoney
         {
             if (currentGoal.Text == " " || currentGoal.Text == null || currentGoal.Text == "")
             {
-                ErrorLabel.Text = "Please enter valid amount";
+                ErrorLabel.Text = "*Please enter valid amount";
 
             }
             else
@@ -33,15 +34,21 @@ namespace MadMoney
                 var goal = decimal.Parse(currentGoal.Text);
                 if (goal < 0)
                 {
-                    ErrorLabel.Text = "Please enter valid amount";
+                    ErrorLabel.Text = "*Please enter valid amount";
                 }
-                else
+                else if (Regex.IsMatch(currentGoal.Text, @"^[0-9]+(\.[0-9]{1,2})?$"))
                 {
                     App.GlobalBudget.SetBudgetGoalByMonthYear(goal, App.GlobalViewData.CurrentlyDisplayedMonthYear);
 
 
                     Navigation.PushAsync(new MainBudgetSummaryPage());
                 }
+                else
+                {
+                    ErrorLabel.Text = "*Please enter valid amount";
+                }
+
+
             }
         }
 

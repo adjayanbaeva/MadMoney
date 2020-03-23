@@ -132,17 +132,6 @@
             <Label HorizontalOptions="CenterAndExpand"/>
             
             
-            
-            <Button x:Name="editGoal"
-                Text="Edit Goal"
-                FontSize="22"
-                BackgroundColor="LightBlue"
-                Clicked="editGoal_Clicked"/>
-
-
-
-
-
             <Button x:Name="FilterExpensesButton"
                 Text="Filter Expenses"
                 FontSize="16"
