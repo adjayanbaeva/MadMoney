@@ -18,6 +18,10 @@ namespace MadMoney
 
             InitializeComponent();
 
+            // TODO: Replace/delete this placeholder
+            // Temporary month creation call until Ainur's AddGoal page is
+            // ready to handle creating the initial month when the user sets
+            // their initial goal
             App.GlobalBudget.CreateNewMonth(2000M,
                                 DateTime.Parse("2020-03-01"));
 

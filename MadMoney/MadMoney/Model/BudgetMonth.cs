@@ -58,22 +58,13 @@ namespace MadMoney.Model
                     NotifyPropertyChanged();
                 }
         }
-        // Expense can go over budget goal
+        // Design allows for expenses to exceed the budget goal
 
-
-        // TODO: Move AmountRemainingInBudgetGoal and any other methods
-        // that calculate and return 
-        // if it's not data that the Model stores, then it is something you calculate
-        // That calculation is business logic and belongs in the ViewModel
-        public decimal AmountRemainingInBudgetGoal { get; }
-        // If AmountRemainingInBudgetGoal > 0, user has budget left this month
-        // If AmountRemainingInBudgetGoal == 0, user has used up budget exactly
-        // If AmountRemainingInBudgetGoal < 0, user has exceeded budget
 
         // TODO:
         // Any date in a month is valid input
-        // However, unlike Expense, extra data (that is: day, hour, minute, second)
-        // is truncated as it has no reasonable use.
+        // However, unlike Expense, *** extra data (that is: day, hour, minute, second)
+        // is truncated as it has no reasonable use. ***
         // Specifically, MonthYear represents the duration of one month in a year
         // rather than a specific point in the year
         public DateTime MonthYear { get; }
@@ -84,9 +75,7 @@ namespace MadMoney.Model
         public IEnumerable<Expense> Expenses {
             get { return expenseCollection; }
         }
-        // Instead of: public IEnumerable<Expense> GetExpenses() { return null; }
 
-        // may need to provide additional ways to access/modify Expense collection
 
         public void AddExpense(Expense exp)
         {
@@ -97,8 +86,23 @@ namespace MadMoney.Model
         // How to specify which Expense to edit?
         // How to submit those edits?
 
-        public void DeleteExpense(string id) { }
-        // How to specify which Expense to delete?
+
+
+        // No protection for the bad state of multiple expenses erroneously
+        // having the same Id. The first (and hopefully only) match
+        // will be deleted.
+        public bool DeleteExpense(string id)
+        {
+            var foundExpense =
+                expenseCollection.Find(expense => expense.Id == id);
+
+            // For a reference type T, the Remove method on List<T> checks
+            // for reference equality, that is, it checks to see if the
+            // object parameter is literally the same object in memory as
+            // the object in the list.
+            return expenseCollection.Remove(foundExpense);
+        }
+
 
 
         // View should ask ViewModel to ask Model about
