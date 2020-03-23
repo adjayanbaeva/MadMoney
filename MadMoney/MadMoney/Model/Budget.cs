@@ -18,12 +18,6 @@ namespace MadMoney.Model
             budgetMonths = new List<BudgetMonth>();
         }
 
-        // TODO:
-        // Make the BudgetMonth an internal class type,
-        // an implementation detail of the Model
-        public IEnumerable<BudgetMonth> BudgetMonths
-        { get { return budgetMonths; } }
-        // may need to provide additional ways to access/modify BudgetMonths collection
 
         public void CreateNewMonth(decimal goal, DateTime monthYear)
         {
@@ -44,19 +38,15 @@ namespace MadMoney.Model
 
 
             budgetMonths.Add(new BudgetMonth(goal, monthYear));
-            // Ideally Budget would not expose the BudgetMonth type at all
-            // BudgetMonth is a class type that is internal to the implementation
-            // of the model, but for now it is exposed
+
         }
 
-
-        // Ideally deprecate this method in the interest of making BudgetMonth
-        // a class that is internal to the Model implementation
-        public BudgetMonth GetBudgetMonthByMonthYear(DateTime monthYear)
+        private BudgetMonth GetBudgetMonthByMonthYear(DateTime monthYear)
         {
             return budgetMonths.Find(month =>
                     DateTimeUtility.IsSameMonthYear(month.MonthYear, monthYear));
         }
+
 
         public IEnumerable<Expense> GetExpensesByMonthYear(DateTime monthYear)
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MadMoney.Model
 {
-    public class BudgetMonth : INotifyPropertyChanged // ** TODO: Finish implementing this interface
+    internal class BudgetMonth : INotifyPropertyChanged // ** TODO: Finish implementing this interface
     // OR...May ultimately be unnnecessary
     // Bindings are re-established each time a Page is loaded, correct?
     // Following this guide for INotifyPropertyChanged:
@@ -38,7 +38,6 @@ namespace MadMoney.Model
         }
 
 
-        // Which constructors are desired?
         public BudgetMonth(decimal goal,
                            DateTime monthYear)
         {
@@ -46,8 +45,7 @@ namespace MadMoney.Model
             BudgetGoal = goal;
             MonthYear = monthYear;
         }
-        // the StartDate of the month can only be set as the
-        // BudgetMonth is constructed
+
 
         public decimal BudgetGoal
         {
