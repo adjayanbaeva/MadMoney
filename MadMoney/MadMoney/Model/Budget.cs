@@ -172,6 +172,59 @@ namespace MadMoney.Model
             return deletedExpense ? true : false;
         }
 
+        public bool SetDescriptionForExpenseById(string id, string expDescrip)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Description = expDescrip;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetAmountForExpenseById(string id, decimal expAmt)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Amount = expAmt;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetDateForExpenseById(string id, DateTime expDate)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Date = expDate;
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetCategoryForExpenseById(string id, ExpenseCategory expCat)
+        {
+            var expense = FindExpenseById(id);
+
+            if (null != expense)
+            {
+                expense.Category = expCat;
+                return true;
+            }
+
+            return false;
+
+        }
+
 
         // The design doesn't provide for deleting a budget month
         // public void DeleteBudget(DateTime month) { }

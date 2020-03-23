@@ -26,6 +26,21 @@ namespace MadMoney
             var copyOfExpenseToEdit =
                 App.GlobalBudget.GetCopyOfExpenseById(idOfExpenseToEdit);
 
+
+
+
+            // Overwriting the properties of the specified expense to prove
+            // that it works.
+            App.GlobalBudget.SetDescriptionForExpenseById(idOfExpenseToEdit, "Whole Foods");
+
+            App.GlobalBudget.SetAmountForExpenseById(idOfExpenseToEdit, 250.00M);
+
+            App.GlobalBudget.SetDateForExpenseById(idOfExpenseToEdit, DateTime.Today);
+
+            App.GlobalBudget.SetCategoryForExpenseById(idOfExpenseToEdit, ExpenseCategory.Enum.Groceries);
+
+
+
             InitializeComponent();
         }
 
